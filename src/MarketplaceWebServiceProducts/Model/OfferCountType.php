@@ -37,7 +37,7 @@
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_OfferCountType extends MarketplaceWebServiceProducts\MWS_Model {
+ class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
 
     public function __construct($data = null)
     {

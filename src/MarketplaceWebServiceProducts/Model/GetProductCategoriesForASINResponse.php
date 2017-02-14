@@ -1,4 +1,8 @@
 <?php
+
+namespace MarketplaceWebServiceProducts\GetProductCategoriesForASINResponse;
+use MarketplaceWebServiceProducts;
+
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -37,7 +41,7 @@
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_GetProductCategoriesForASINResponse extends MarketplaceWebServiceProducts\MWS_Model {
+ class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
 
     public function __construct($data = null)
     {

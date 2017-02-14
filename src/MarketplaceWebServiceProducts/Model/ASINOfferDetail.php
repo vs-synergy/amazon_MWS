@@ -48,7 +48,7 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_ASINOfferDetail extends MarketplaceWebServiceProducts\MWS_Model {
+ class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
 
     public function __construct($data = null)
     {
