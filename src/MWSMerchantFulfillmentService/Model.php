@@ -17,10 +17,12 @@
  * Generated: Fri Nov 11 06:01:18 PST 2016
  */
 
+namespace MWSMerchantFulfillmentService;
+
 /**
  * MWSMerchantFulfillmentService_Model - base class for all model classes
  */
-abstract class MWSMerchantFulfillmentService_Model
+abstract class MWS_Model
 {
 
     /** @var array */

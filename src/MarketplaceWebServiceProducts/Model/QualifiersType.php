@@ -21,7 +21,7 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
-require_once (dirname(__FILE__) . '/../Model.php');
+
 
 
 /**
@@ -40,7 +40,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_QualifiersType extends MarketplaceWebServiceProducts_Model {
+ class MarketplaceWebServiceProducts_Model_QualifiersType extends MarketplaceWebServiceProducts\MWS_Model {
 
     public function __construct($data = null)
     {
