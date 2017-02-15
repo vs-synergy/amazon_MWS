@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\Mock;
-use MarketplaceWebServiceProducts\MWS_Interface\MWS_Interface;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -21,12 +17,12 @@ use MarketplaceWebServiceProducts\MWS_Interface\MWS_Interface;
  * Generated: Fri Sep 16 11:49:32 PDT 2016
  */
 
-
 /**
  *  @see MarketplaceWebServiceProducts_Interface
  */
+require_once (dirname(__FILE__) . '/Interface.php'); 
 
-class MWS_Mock implements MWS_Interface
+class MarketplaceWebServiceProducts_Mock implements MarketplaceWebServiceProducts_Interface
 {
     // Public API ------------------------------------------------------------//
 

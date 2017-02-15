@@ -21,7 +21,7 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
-
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -37,7 +37,7 @@
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MarketplaceWebServiceProducts_Model_GetMatchingProductResponse extends MarketplaceWebServiceProducts_Model {
 
     public function __construct($data = null)
     {
