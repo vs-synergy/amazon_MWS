@@ -1,9 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\AttributeSetList;
-use MarketplaceWebServiceProducts;
-
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -26,7 +21,7 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
-
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -40,7 +35,7 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MarketplaceWebServiceProducts_Model_AttributeSetList extends MarketplaceWebServiceProducts_Model {
 
     public function __construct($data = null)
     {
