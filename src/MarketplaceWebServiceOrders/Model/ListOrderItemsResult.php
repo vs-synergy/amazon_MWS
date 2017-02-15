@@ -1,4 +1,8 @@
 <?php
+
+namespace MWS_Orders\Model\ListOrderItemsResult;
+use MWS_Orders\Model;
+
 /*******************************************************************************
  * Copyright 2009-2015 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -37,7 +41,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceOrders_Model_ListOrderItemsResult extends MarketplaceWebServiceOrders_Model {
+ class MWS_ListOrderItemsResult extends Model {
 
     public function __construct($data = null)
     {
