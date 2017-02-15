@@ -1,6 +1,8 @@
-<?php namespace MWSMerchantFulfillmentService\Address;
+<?php
 
+namespace MWSMerchantFulfillmentService\Address;
 use MWSMerchantFulfillmentService;
+
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 

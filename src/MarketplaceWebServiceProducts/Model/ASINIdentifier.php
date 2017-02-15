@@ -1,4 +1,5 @@
 <?php
+
 namespace MarketplaceWebServiceProducts\ASINIdentifier;
 use MarketplaceWebServiceProducts;
 
