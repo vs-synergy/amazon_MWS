@@ -1,4 +1,7 @@
 <?php
+
+namespace MWS_Orders\Model\ResponseHeaderMetadata;
+
 /*******************************************************************************
  * Copyright 2009-2015 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -17,7 +20,7 @@
  * Generated: Fri Sep 25 20:06:28 GMT 2015
  */
 
-class MarketplaceWebServiceOrders_Model_ResponseHeaderMetadata {
+class MWS_ResponseHeaderMetadata {
 
   const REQUEST_ID = 'x-mws-request-id';
   const RESPONSE_CONTEXT = 'x-mws-response-context';

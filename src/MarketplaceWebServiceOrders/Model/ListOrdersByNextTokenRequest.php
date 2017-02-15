@@ -1,4 +1,8 @@
 <?php
+
+namespace MWS_Orders\Model\ListOrdersByNextTokenRequest;
+use MWS_Orders\Model;
+
 /*******************************************************************************
  * Copyright 2009-2015 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -37,7 +41,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceOrders_Model_ListOrdersByNextTokenRequest extends MarketplaceWebServiceOrders_Model {
+ class MWS_ListOrdersByNextTokenRequest extends Model {
 
     public function __construct($data = null)
     {
