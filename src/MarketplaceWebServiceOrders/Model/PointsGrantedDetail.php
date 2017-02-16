@@ -46,7 +46,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     {
     $this->_fields = array (
     'PointsNumber' => array('FieldValue' => null, 'FieldType' => 'int'),
-    'PointsMonetaryValue' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_Money'),
+    'PointsMonetaryValue' => array('FieldValue' => null, 'FieldType' => 'MWS_Money'),
     );
     parent::__construct($data);
     }

@@ -92,7 +92,6 @@ class MWS_Client implements MWS_Interface
         $httpResponse = $this->_invoke($parameters);
 
         require_once (dirname(__FILE__) . '/Model/GetOrderResponse.php');
-
         $response = MWS_GetOrderResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -418,9 +417,13 @@ class MWS_Client implements MWS_Interface
      */
     public function __construct($awsAccessKeyId, $awsSecretAccessKey, $applicationName, $applicationVersion, $config = null)
     {
-        iconv_set_encoding('output_encoding', 'UTF-8');
-        iconv_set_encoding('input_encoding', 'UTF-8');
-        iconv_set_encoding('internal_encoding', 'UTF-8');
+        if (PHP_VERSION_ID < 50600) {
+          iconv_set_encoding('input_encoding', 'UTF-8');
+          iconv_set_encoding('output_encoding', 'UTF-8');
+          iconv_set_encoding('internal_encoding', 'UTF-8');
+        } else {
+          ini_set('default_charset', 'UTF-8');
+        }
 
         $this->_awsAccessKeyId = $awsAccessKeyId;
         $this->_awsSecretAccessKey = $awsSecretAccessKey;
@@ -579,7 +582,7 @@ class MWS_Client implements MWS_Interface
             }
         } catch (MWS_Exception $se) {
             throw $se;
-        } catch (Exception $t) {
+        } catch (\Exception $t) {
             require_once (dirname(__FILE__) . '/Exception.php');
             throw new MWS_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
         }
@@ -588,7 +591,7 @@ class MWS_Client implements MWS_Interface
     /**
      * Look for additional error strings in the response and return formatted exception
      */
-    private function _reportAnyErrors($responseBody, $status, $responseHeaderMetadata, Exception $e =  null)
+    private function _reportAnyErrors($responseBody, $status, $responseHeaderMetadata, \Exception $e =  null)
     {
         $exProps = array();
         $exProps["StatusCode"] = $status;
@@ -891,7 +894,7 @@ class MWS_Client implements MWS_Interface
             $parameters['SignatureMethod'] = $algorithm;
             $stringToSign = $this->_calculateStringToSignV2($parameters);
         } else {
-            throw new Exception("Invalid Signature Version specified");
+            throw new \Exception("Invalid Signature Version specified");
         }
         return $this->_sign($stringToSign, $key, $algorithm);
     }
@@ -934,7 +937,7 @@ class MWS_Client implements MWS_Interface
         } else if ($algorithm === 'HmacSHA256') {
             $hash = 'sha256';
         } else {
-            throw new Exception ("Non-supported signing method specified");
+            throw new \Exception ("Non-supported signing method specified");
         }
         return base64_encode(
             hash_hmac($hash, $data, $key, true)

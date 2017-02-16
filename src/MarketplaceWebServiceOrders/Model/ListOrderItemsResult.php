@@ -48,7 +48,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     $this->_fields = array (
     'NextToken' => array('FieldValue' => null, 'FieldType' => 'string'),
     'AmazonOrderId' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'OrderItems' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceOrders_Model_OrderItem'), 'ListMemberName' => 'OrderItem'),
+    'OrderItems' => array('FieldValue' => array(), 'FieldType' => array('MWS_OrderItem'), 'ListMemberName' => 'OrderItem'),
     );
     parent::__construct($data);
     }

@@ -45,7 +45,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'Payment' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_Money'),
+    'Payment' => array('FieldValue' => null, 'FieldType' => 'MWS_Money'),
     'PaymentMethod' => array('FieldValue' => null, 'FieldType' => 'string'),
     );
     parent::__construct($data);
