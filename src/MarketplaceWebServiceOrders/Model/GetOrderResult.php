@@ -44,7 +44,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'Orders' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceOrders_Model_Order'), 'ListMemberName' => 'Order'),
+    'Orders' => array('FieldValue' => array(), 'FieldType' => array('MWS_Order'), 'ListMemberName' => 'Order'),
     );
     parent::__construct($data);
     }

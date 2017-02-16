@@ -46,9 +46,9 @@ require_once (dirname(__FILE__) . '/../Model.php');
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'ListOrderItemsByNextTokenResult' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_ListOrderItemsByNextTokenResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_ResponseHeaderMetadata'),
+    'ListOrderItemsByNextTokenResult' => array('FieldValue' => null, 'FieldType' => 'MWS_ListOrderItemsByNextTokenResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -200,14 +200,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='ListOrderItemsByNextTokenResponse']");
         if ($response->length == 1) {
-            return new MarketplaceWebServiceOrders_Model_ListOrderItemsByNextTokenResponse(($response->item(0))); 
+            return new MWS_ListOrderItemsByNextTokenResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebServiceOrders_Model_ListOrderItemsByNextTokenResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_ListOrderItemsByNextTokenResponse from provided XML. 
                                   Make sure that ListOrderItemsByNextTokenResponse is a root element");
         }
     }

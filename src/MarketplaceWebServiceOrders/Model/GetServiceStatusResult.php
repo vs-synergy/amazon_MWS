@@ -50,7 +50,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     'Status' => array('FieldValue' => null, 'FieldType' => 'string'),
     'Timestamp' => array('FieldValue' => null, 'FieldType' => 'string'),
     'MessageId' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'Messages' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceOrders_Model_Message'), 'ListMemberName' => 'Message'),
+    'Messages' => array('FieldValue' => array(), 'FieldType' => array('MWS_Message'), 'ListMemberName' => 'Message'),
     );
     parent::__construct($data);
     }

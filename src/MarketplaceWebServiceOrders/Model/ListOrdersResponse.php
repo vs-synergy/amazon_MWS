@@ -46,9 +46,9 @@ require_once (dirname(__FILE__) . '/../Model.php');
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'ListOrdersResult' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_ListOrdersResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_ResponseHeaderMetadata'),
+    'ListOrdersResult' => array('FieldValue' => null, 'FieldType' => 'MWS_ListOrdersResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -200,14 +200,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='ListOrdersResponse']");
         if ($response->length == 1) {
-            return new MarketplaceWebServiceOrders_Model_ListOrdersResponse(($response->item(0))); 
+            return new MWS_ListOrdersResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebServiceOrders_Model_ListOrdersResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_ListOrdersResponse from provided XML. 
                                   Make sure that ListOrdersResponse is a root element");
         }
     }

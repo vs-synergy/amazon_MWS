@@ -50,7 +50,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     'NextToken' => array('FieldValue' => null, 'FieldType' => 'string'),
     'CreatedBefore' => array('FieldValue' => null, 'FieldType' => 'string'),
     'LastUpdatedBefore' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'Orders' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceOrders_Model_Order'), 'ListMemberName' => 'Order'),
+    'Orders' => array('FieldValue' => array(), 'FieldType' => array('MWS_Order'), 'ListMemberName' => 'Order'),
     );
     parent::__construct($data);
     }
