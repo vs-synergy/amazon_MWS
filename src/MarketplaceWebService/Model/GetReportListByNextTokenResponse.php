@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\GetReportListByNextTokenResponse;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -34,7 +37,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportListByNextTokenResponse extends MarketplaceWebService_Model
+class MWS_GetReportListByNextTokenResponse extends Model
 {
 
 
@@ -54,8 +57,8 @@ class MarketplaceWebService_Model_GetReportListByNextTokenResponse extends Marke
     public function __construct($data = null)
     {
         $this->fields = array (
-        'GetReportListByNextTokenResult' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_GetReportListByNextTokenResult'),
-        'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_ResponseMetadata'),
+        'GetReportListByNextTokenResult' => array('FieldValue' => null, 'FieldType' => 'MWS_GetReportListByNextTokenResult'),
+        'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
         );
         parent::__construct($data);
     }
@@ -69,15 +72,15 @@ class MarketplaceWebService_Model_GetReportListByNextTokenResponse extends Marke
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
     	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
         $response = $xpath->query('//a:GetReportListByNextTokenResponse');
         if ($response->length == 1) {
-            return new MarketplaceWebService_Model_GetReportListByNextTokenResponse(($response->item(0))); 
+            return new MWS_GetReportListByNextTokenResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_GetReportListByNextTokenResponse from provided XML. 
+            throw new Exception ("Unable to construct MWS_GetReportListByNextTokenResponse from provided XML. 
                                   Make sure that GetReportListByNextTokenResponse is a root element");
         }
           

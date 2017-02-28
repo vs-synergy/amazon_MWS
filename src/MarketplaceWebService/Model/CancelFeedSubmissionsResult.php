@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\CancelFeedSubmissionsResult;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -34,7 +37,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_CancelFeedSubmissionsResult extends MarketplaceWebService_Model
+class MWS_CancelFeedSubmissionsResult extends Model
 {
 
 
@@ -55,7 +58,7 @@ class MarketplaceWebService_Model_CancelFeedSubmissionsResult extends Marketplac
     {
         $this->fields = array (
         'Count' => array('FieldValue' => null, 'FieldType' => 'int'),
-        'FeedSubmissionInfo' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebService_Model_FeedSubmissionInfo')),
+        'FeedSubmissionInfo' => array('FieldValue' => array(), 'FieldType' => array('MWS_FeedSubmissionInfo')),
         );
         parent::__construct($data);
     }

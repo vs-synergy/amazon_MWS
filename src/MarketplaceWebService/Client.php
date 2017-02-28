@@ -19,19 +19,79 @@
 /**
  *  @see MarketplaceWebService_Interface
  */
-require_once ('MarketplaceWebService/Interface.php');
+
+use MWS\MWS_Interface\MWS_Interface;
+
+use MWS\Model\GetReportRequest\MWS_GetReportRequest;
+use MWS\Model\GetReportResponse\MWS_GetReportResponse;
+
+use MWS\Model\GetReportScheduleCountRequest\MWS_GetReportScheduleCountRequest;
+use MWS\Model\GetReportScheduleCountResponse\MWS_GetReportScheduleCountResponse;
+
+use MWS\Model\GetReportRequestListByNextTokenRequest\MWS_GetReportRequestListByNextTokenRequest;
+use MWS\Model\GetReportRequestListByNextTokenResponse\MWS_GetReportRequestListByNextTokenResponse;
+
+use MWS\Model\UpdateReportAcknowledgementsRequest\MWS_UpdateReportAcknowledgementsRequest;
+use MWS\Model\UpdateReportAcknowledgementsResponse\MWS_UpdateReportAcknowledgementsResponse;
+
+use MWS\Model\SubmitFeedRequest\MWS_SubmitFeedRequest;
+use MWS\Model\SubmitFeedResponse\MWS_SubmitFeedResponse;
+
+use MWS\Model\GetReportCountRequest\MWS_GetReportCountRequest;
+use MWS\Model\GetReportCountResponse\MWS_GetReportCountResponse;
+
+use MWS\Model\GetFeedSubmissionListByNextTokenRequest\MWS_GetFeedSubmissionListByNextTokenRequest;
+use MWS\Model\GetFeedSubmissionListByNextTokenResponse\MWS_GetFeedSubmissionListByNextTokenResponse;
+
+use MWS\Model\CancelFeedSubmissionsRequest\MWS_CancelFeedSubmissionsRequest;
+use MWS\Model\CancelFeedSubmissionsResponse\MWS_CancelFeedSubmissionsResponse;
+
+use MWS\Model\RequestReportRequest\MWS_RequestReportRequest;
+use MWS\Model\RequestReportResponse\MWS_RequestReportResponse;
+
+use MWS\Model\GetFeedSubmissionCountRequest\MWS_GetFeedSubmissionCountRequest;
+use MWS\Model\GetFeedSubmissionCountResponse\MWS_GetFeedSubmissionCountResponse;
+
+use MWS\Model\CancelReportRequestsRequest\MWS_CancelReportRequestsRequest;
+use MWS\Model\CancelReportRequestsResponse\MWS_CancelReportRequestsResponse;
+
+use MWS\Model\GetReportListRequest\MWS_GetReportListRequest;
+use MWS\Model\GetReportListResponse\MWS_GetReportListResponse;
+
+use MWS\Model\GetFeedSubmissionListRequest\MWS_GetFeedSubmissionListRequest;
+use MWS\Model\GetFeedSubmissionListResponse\MWS_GetFeedSubmissionListResponse;
+
+use MWS\Model\GetReportRequestListRequest\MWS_GetReportRequestListRequest;
+use MWS\Model\GetReportRequestListResponse\MWS_GetReportRequestListResponse;
+
+use MWS\Model\GetReportListByNextTokenRequest\MWS_GetReportListByNextTokenRequest;
+use MWS\Model\GetReportListByNextTokenResponse\MWS_GetReportListByNextTokenResponse;
+
+use MWS\Model\ManageReportScheduleRequest\MWS_ManageReportScheduleRequest;
+use MWS\Model\ManageReportScheduleResponse\MWS_ManageReportScheduleResponse;
+
+use MWS\Model\GetReportRequestCountRequest\MWS_GetReportRequestCountRequest;
+use MWS\Model\GetReportRequestCountResponse\MWS_GetReportRequestCountResponse;
+
+use MWS\Model\GetReportScheduleListRequest\MWS_GetReportScheduleListRequest;
+use MWS\Model\GetReportScheduleListResponse\MWS_GetReportScheduleListResponse;
+
+use MWS\Model\ResponseHeaderMetadata\MWS_ResponseHeaderMetadata;
+
+
+require_once (dirname(__FILE__) . '/Interface.php');
 require_once ('RequestType.php');
 
 define('CONVERTED_PARAMETERS_KEY', 'PARAMETERS');
 define('CONVERTED_HEADERS_KEY', 'HEADERS');
 
 /**
- * The Amazon Marketplace Web Service contain APIs for inventory and order management.
- *
- * MarketplaceWebService_Client is an implementation of MarketplaceWebService
- *
- */
-class MarketplaceWebService_Client implements MarketplaceWebService_Interface
+* The Amazon Marketplace Web Service contain APIs for inventory and order management.
+*
+* MarketplaceWebService_Client is an implementation of MarketplaceWebService
+*
+*/
+class MWS_Client implements MWS_Interface
 {
 
   /** @var string */
@@ -89,9 +149,14 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function __construct(
   $awsAccessKeyId, $awsSecretAccessKey, $config, $applicationName, $applicationVersion, $attributes = null) {
-	iconv_set_encoding('output_encoding', 'UTF-8');
-    iconv_set_encoding('input_encoding', 'UTF-8');
-    iconv_set_encoding('internal_encoding', 'UTF-8');
+
+    if (PHP_VERSION_ID < 50600) {
+      iconv_set_encoding('input_encoding', 'UTF-8');
+      iconv_set_encoding('output_encoding', 'UTF-8');
+      iconv_set_encoding('internal_encoding', 'UTF-8');
+    } else {
+      ini_set('default_charset', 'UTF-8');
+    }
 
     $this->awsAccessKeyId = $awsAccessKeyId;
     $this->awsSecretAccessKey = $awsSecretAccessKey;
@@ -261,14 +326,14 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function getReport($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetReportRequest) {
-      require_once ('MarketplaceWebService/Model/GetReportRequest.php');
-      $request = new MarketplaceWebService_Model_GetReportRequest($request);
+    if (!$request instanceof MWS_GetReportRequest) {
+      require_once (dirname(__FILE__) . '/Model/ListOrderItemsRequest.php');
+      $request = new MWS_GetReportRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetReportResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetReportResponse.php');
 
     $httpResponse = $this->invoke($this->convertGetReport($request), $request->getReport());
-    $response = MarketplaceWebService_Model_GetReportResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetReportResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -287,13 +352,13 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function getReportScheduleCount($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetReportScheduleCountRequest) {
-      require_once ('MarketplaceWebService/Model/GetReportScheduleCountRequest.php');
-      $request = new MarketplaceWebService_Model_GetReportScheduleCountRequest($request);
+    if (!$request instanceof MWS_GetReportScheduleCountRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetReportScheduleCountRequest.php');
+      $request = new MWS_GetReportScheduleCountRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetReportScheduleCountResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetReportScheduleCountResponse.php');
     $httpResponse = $this->invoke($this->convertGetReportScheduleCount($request));
-    $response = MarketplaceWebService_Model_GetReportScheduleCountResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetReportScheduleCountResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -312,13 +377,13 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function getReportRequestListByNextToken($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetReportRequestListByNextTokenRequest) {
-      require_once ('MarketplaceWebService/Model/GetReportRequestListByNextTokenRequest.php');
-      $request = new MarketplaceWebService_Model_GetReportRequestListByNextTokenRequest($request);
+    if (!$request instanceof MWS_GetReportRequestListByNextTokenRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetReportRequestListByNextTokenRequest.php');
+      $request = new MWS_GetReportRequestListByNextTokenRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetReportRequestListByNextTokenResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetReportRequestListByNextTokenResponse.php');
     $httpResponse = $this->invoke($this->convertGetReportRequestListByNextToken($request));
-    $response = MarketplaceWebService_Model_GetReportRequestListByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetReportRequestListByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -337,13 +402,13 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function updateReportAcknowledgements($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_UpdateReportAcknowledgementsRequest) {
-      require_once ('MarketplaceWebService/Model/UpdateReportAcknowledgementsRequest.php');
-      $request = new MarketplaceWebService_Model_UpdateReportAcknowledgementsRequest($request);
+    if (!$request instanceof MWS_UpdateReportAcknowledgementsRequest) {
+      require_once (dirname(__FILE__) . '/Model/UpdateReportAcknowledgementsRequest.php');
+      $request = new MWS_UpdateReportAcknowledgementsRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/UpdateReportAcknowledgementsResponse.php');
+    require_once (dirname(__FILE__) . '/Model/UpdateReportAcknowledgementsResponse.php');
     $httpResponse = $this->invoke($this->convertUpdateReportAcknowledgements($request));
-    $response = MarketplaceWebService_Model_UpdateReportAcknowledgementsResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_UpdateReportAcknowledgementsResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -366,13 +431,13 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function submitFeed($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_SubmitFeedRequest) {
-      require_once ('MarketplaceWebService/Model/SubmitFeedRequest.php');
-      $request = new MarketplaceWebService_Model_SubmitFeedRequest($request);
+    if (!$request instanceof MWS_SubmitFeedRequest) {
+      require_once (dirname(__FILE__) . '/Model/SubmitFeedRequest.php');
+      $request = new MWS_SubmitFeedRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/SubmitFeedResponse.php');
+    require_once (dirname(__FILE__) . '/Model/SubmitFeedResponse.php');
     $httpResponse = $this->invoke($this->convertSubmitFeed($request), $request->getFeedContent());
-    $response = MarketplaceWebService_Model_SubmitFeedResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_SubmitFeedResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -393,13 +458,13 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function getReportCount($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetReportCountRequest) {
-      require_once ('MarketplaceWebService/Model/GetReportCountRequest.php');
-      $request = new MarketplaceWebService_Model_GetReportCountRequest($request);
+    if (!$request instanceof MWS_GetReportCountRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetReportCountRequest.php');
+      $request = new MWS_GetReportCountRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetReportCountResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetReportCountResponse.php');
     $httpResponse = $this->invoke($this->convertGetReportCount($request));
-    $response = MarketplaceWebService_Model_GetReportCountResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetReportCountResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -418,16 +483,18 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function getFeedSubmissionListByNextToken($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenRequest) {
-      require_once ('MarketplaceWebService/Model/GetFeedSubmissionListByNextTokenRequest.php');
-      $request = new MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenRequest($request);
+    if (!$request instanceof MWS_GetFeedSubmissionListByNextTokenRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetFeedSubmissionListByNextTokenRequest.php');
+      $request = new MWS_GetFeedSubmissionListByNextTokenRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetFeedSubmissionListByNextTokenResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetFeedSubmissionListByNextTokenResponse.php');
     $httpResponse = $this->invoke($this->convertGetFeedSubmissionListByNextToken($request));
-    $response = MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetFeedSubmissionListByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
+
+
 
   /**
    * Cancel Feed Submissions
@@ -444,13 +511,13 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function cancelFeedSubmissions($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_CancelFeedSubmissionsRequest) {
-      require_once ('MarketplaceWebService/Model/CancelFeedSubmissionsRequest.php');
-      $request = new MarketplaceWebService_Model_CancelFeedSubmissionsRequest($request);
+    if (!$request instanceof MWS_CancelFeedSubmissionsRequest) {
+      require_once (dirname(__FILE__) . '/Model/CancelFeedSubmissionsRequest.php');
+      $request = new MWS_CancelFeedSubmissionsRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/CancelFeedSubmissionsResponse.php');
+    require_once (dirname(__FILE__) . '/Model/CancelFeedSubmissionsResponse.php');
     $httpResponse = $this->invoke($this->convertCancelFeedSubmissions($request));
-    $response = MarketplaceWebService_Model_CancelFeedSubmissionsResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_CancelFeedSubmissionsResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -469,38 +536,40 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function requestReport($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_RequestReportRequest) {
-      require_once ('MarketplaceWebService/Model/RequestReportRequest.php');
-      $request = new MarketplaceWebService_Model_RequestReportRequest($request);
+    if (!$request instanceof MWS_RequestReportRequest) {
+      require_once (dirname(__FILE__) . '/Model/RequestReportRequest.php');
+      $request = new MWS_RequestReportRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/RequestReportResponse.php');
+    require_once (dirname(__FILE__) . '/Model/RequestReportResponse.php');
     $httpResponse = $this->invoke($this->convertRequestReport($request));
-    $response = MarketplaceWebService_Model_RequestReportResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_RequestReportResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
 
-  /**
-   * Get Feed Submission Count
-   * returns the number of feeds matching all of the specified criteria
-   *
-   * @see http://docs.amazonwebservices.com/${docPath}GetFeedSubmissionCount.html
-   * @param mixed $request array of parameters for MarketplaceWebService_Model_GetFeedSubmissionCountRequest request
-   * or MarketplaceWebService_Model_GetFeedSubmissionCountRequest object itself
-   * @see MarketplaceWebService_Model_GetFeedSubmissionCount
-   * @return MarketplaceWebService_Model_GetFeedSubmissionCountResponse MarketplaceWebService_Model_GetFeedSubmissionCountResponse
-   *
-   * @throws MarketplaceWebService_Exception
-   */
+
+
+/**
+ * Get Feed Submission Count
+ * returns the number of feeds matching all of the specified criteria
+ *
+ * @see http://docs.amazonwebservices.com/${docPath}GetFeedSubmissionCount.html
+ * @param mixed $request array of parameters for MarketplaceWebService_Model_GetFeedSubmissionCountRequest request
+ * or MarketplaceWebService_Model_GetFeedSubmissionCountRequest object itself
+ * @see MarketplaceWebService_Model_GetFeedSubmissionCount
+ * @return MarketplaceWebService_Model_GetFeedSubmissionCountResponse MarketplaceWebService_Model_GetFeedSubmissionCountResponse
+ *
+ * @throws MarketplaceWebService_Exception
+ */
   public function getFeedSubmissionCount($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetFeedSubmissionCountRequest) {
-      require_once ('MarketplaceWebService/Model/GetFeedSubmissionCountRequest.php');
-      $request = new MarketplaceWebService_Model_GetFeedSubmissionCountRequest($request);
+    if (!$request instanceof MWS_GetFeedSubmissionCountRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetFeedSubmissionCountRequest.php');
+      $request = new MWS_GetFeedSubmissionCountRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetFeedSubmissionCountResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetFeedSubmissionCountResponse.php');
     $httpResponse = $this->invoke($this->convertGetFeedSubmissionCount($request));
-    $response = MarketplaceWebService_Model_GetFeedSubmissionCountResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetFeedSubmissionCountResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -520,39 +589,41 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function cancelReportRequests($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_CancelReportRequestsRequest) {
-      require_once ('MarketplaceWebService/Model/CancelReportRequestsRequest.php');
-      $request = new MarketplaceWebService_Model_CancelReportRequestsRequest($request);
+    if (!$request instanceof MWS_CancelReportRequestsRequest) {
+      require_once (dirname(__FILE__) . '/Model/CancelReportRequestsRequest.php');
+      $request = new MWS_CancelReportRequestsRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/CancelReportRequestsResponse.php');
+    require_once (dirname(__FILE__) . '/Model/CancelReportRequestsResponse.php');
     $httpResponse = $this->invoke($this->convertCancelReportRequests($request));
-    $response = MarketplaceWebService_Model_CancelReportRequestsResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_CancelReportRequestsResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
 
-  /**
-   * Get Report List
-   * returns a list of reports; by default the most recent ten reports,
-   * regardless of their acknowledgement status
-   *
-   * @see http://docs.amazonwebservices.com/${docPath}GetReportList.html
-   * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportListRequest request
-   * or MarketplaceWebService_Model_GetReportListRequest object itself
-   * @see MarketplaceWebService_Model_GetReportList
-   * @return MarketplaceWebService_Model_GetReportListResponse MarketplaceWebService_Model_GetReportListResponse
-   *
-   * @throws MarketplaceWebService_Exception
-   */
+
+
+/**
+ * Get Report List
+ * returns a list of reports; by default the most recent ten reports,
+ * regardless of their acknowledgement status
+ *
+ * @see http://docs.amazonwebservices.com/${docPath}GetReportList.html
+ * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportListRequest request
+ * or MarketplaceWebService_Model_GetReportListRequest object itself
+ * @see MarketplaceWebService_Model_GetReportList
+ * @return MarketplaceWebService_Model_GetReportListResponse MarketplaceWebService_Model_GetReportListResponse
+ *
+ * @throws MarketplaceWebService_Exception
+ */
   public function getReportList($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetReportListRequest) {
-      require_once ('MarketplaceWebService/Model/GetReportListRequest.php');
-      $request = new MarketplaceWebService_Model_GetReportListRequest($request);
+    if (!$request instanceof MWS_GetReportListRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetReportListRequest.php');
+      $request = new MWS_GetReportListRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetReportListResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetReportListResponse.php');
     $httpResponse = $this->invoke($this->convertGetReportList($request));
-    $response = MarketplaceWebService_Model_GetReportListResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetReportListResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -571,38 +642,40 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function getFeedSubmissionResult($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetFeedSubmissionResultRequest) {
-      require_once ('MarketplaceWebService/Model/GetFeedSubmissionResultRequest.php');
-      $request = new MarketplaceWebService_Model_GetFeedSubmissionResultRequest($request);
+    if (!$request instanceof MWS_GetFeedSubmissionResultRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetFeedSubmissionResultRequest.php');
+      $request = new MWS_GetFeedSubmissionResultRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetFeedSubmissionResultResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetFeedSubmissionResultResponse.php');
     $httpResponse = $this->invoke($this->convertGetFeedSubmissionResult($request), $request->getFeedSubmissionResult());
-    $response = MarketplaceWebService_Model_GetFeedSubmissionResultResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetFeedSubmissionResultResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
 
-  /**
-   * Get Feed Submission List
-   * returns a list of feed submission identifiers and their associated metadata
-   *
-   * @see http://docs.amazonwebservices.com/${docPath}GetFeedSubmissionList.html
-   * @param mixed $request array of parameters for MarketplaceWebService_Model_GetFeedSubmissionListRequest request
-   * or MarketplaceWebService_Model_GetFeedSubmissionListRequest object itself
-   * @see MarketplaceWebService_Model_GetFeedSubmissionList
-   * @return MarketplaceWebService_Model_GetFeedSubmissionListResponse MarketplaceWebService_Model_GetFeedSubmissionListResponse
-   *
-   * @throws MarketplaceWebService_Exception
-   */
+
+
+/**
+ * Get Feed Submission List
+ * returns a list of feed submission identifiers and their associated metadata
+ *
+ * @see http://docs.amazonwebservices.com/${docPath}GetFeedSubmissionList.html
+ * @param mixed $request array of parameters for MarketplaceWebService_Model_GetFeedSubmissionListRequest request
+ * or MarketplaceWebService_Model_GetFeedSubmissionListRequest object itself
+ * @see MarketplaceWebService_Model_GetFeedSubmissionList
+ * @return MarketplaceWebService_Model_GetFeedSubmissionListResponse MarketplaceWebService_Model_GetFeedSubmissionListResponse
+ *
+ * @throws MarketplaceWebService_Exception
+ */
   public function getFeedSubmissionList($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetFeedSubmissionListRequest) {
-      require_once ('MarketplaceWebService/Model/GetFeedSubmissionListRequest.php');
-      $request = new MarketplaceWebService_Model_GetFeedSubmissionListRequest($request);
+    if (!$request instanceof MWS_GetFeedSubmissionListRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetFeedSubmissionListRequest.php');
+      $request = new MWS_GetFeedSubmissionListRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetFeedSubmissionListResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetFeedSubmissionListResponse.php');
     $httpResponse = $this->invoke($this->convertGetFeedSubmissionList($request));
-    $response = MarketplaceWebService_Model_GetFeedSubmissionListResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetFeedSubmissionListResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -621,38 +694,40 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function getReportRequestList($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetReportRequestListRequest) {
-      require_once ('MarketplaceWebService/Model/GetReportRequestListRequest.php');
-      $request = new MarketplaceWebService_Model_GetReportRequestListRequest($request);
+    if (!$request instanceof MWS_GetReportRequestListRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetReportRequestListRequest.php');
+      $request = new MWS_GetReportRequestListRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetReportRequestListResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetReportRequestListResponse.php');
     $httpResponse = $this->invoke($this->convertGetReportRequestList($request));
-    $response = MarketplaceWebService_Model_GetReportRequestListResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetReportRequestListResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
 
-  /**
-   * Get Report Schedule List By Next Token
-   * retrieve the next batch of list items and if there are more items to retrieve
-   *
-   * @see http://docs.amazonwebservices.com/${docPath}GetReportScheduleListByNextToken.html
-   * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest request
-   * or MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest object itself
-   * @see MarketplaceWebService_Model_GetReportScheduleListByNextToken
-   * @return MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse
-   *
-   * @throws MarketplaceWebService_Exception
-   */
+
+
+/**
+ * Get Report Schedule List By Next Token
+ * retrieve the next batch of list items and if there are more items to retrieve
+ *
+ * @see http://docs.amazonwebservices.com/${docPath}GetReportScheduleListByNextToken.html
+ * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest request
+ * or MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest object itself
+ * @see MarketplaceWebService_Model_GetReportScheduleListByNextToken
+ * @return MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse
+ *
+ * @throws MarketplaceWebService_Exception
+ */
   public function getReportScheduleListByNextToken($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest) {
-      require_once ('MarketplaceWebService/Model/GetReportScheduleListByNextTokenRequest.php');
-      $request = new MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest($request);
+    if (!$request instanceof MWS_GetReportScheduleListByNextTokenRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetReportScheduleListByNextTokenRequest.php');
+      $request = new MWS_GetReportScheduleListByNextTokenRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetReportScheduleListByNextTokenResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetReportScheduleListByNextTokenResponse.php');
     $httpResponse = $this->invoke($this->convertGetReportScheduleListByNextToken($request));
-    $response = MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetReportScheduleListByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -671,39 +746,41 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function getReportListByNextToken($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetReportListByNextTokenRequest) {
-      require_once ('MarketplaceWebService/Model/GetReportListByNextTokenRequest.php');
-      $request = new MarketplaceWebService_Model_GetReportListByNextTokenRequest($request);
+    if (!$request instanceof MWS_GetReportListByNextTokenRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetReportListByNextTokenRequest.php');
+      $request = new MWS_GetReportListByNextTokenRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetReportListByNextTokenResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetReportListByNextTokenResponse.php');
     $httpResponse = $this->invoke($this->convertGetReportListByNextToken($request));
-    $response = MarketplaceWebService_Model_GetReportListByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetReportListByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
 
-  /**
-   * Manage Report Schedule
-   * Creates, updates, or deletes a report schedule
-   * for a given report type, such as order reports in particular.
-   *
-   * @see http://docs.amazonwebservices.com/${docPath}ManageReportSchedule.html
-   * @param mixed $request array of parameters for MarketplaceWebService_Model_ManageReportScheduleRequest request
-   * or MarketplaceWebService_Model_ManageReportScheduleRequest object itself
-   * @see MarketplaceWebService_Model_ManageReportSchedule
-   * @return MarketplaceWebService_Model_ManageReportScheduleResponse MarketplaceWebService_Model_ManageReportScheduleResponse
-   *
-   * @throws MarketplaceWebService_Exception
-   */
+
+
+/**
+ * Manage Report Schedule
+ * Creates, updates, or deletes a report schedule
+ * for a given report type, such as order reports in particular.
+ *
+ * @see http://docs.amazonwebservices.com/${docPath}ManageReportSchedule.html
+ * @param mixed $request array of parameters for MarketplaceWebService_Model_ManageReportScheduleRequest request
+ * or MarketplaceWebService_Model_ManageReportScheduleRequest object itself
+ * @see MarketplaceWebService_Model_ManageReportSchedule
+ * @return MarketplaceWebService_Model_ManageReportScheduleResponse MarketplaceWebService_Model_ManageReportScheduleResponse
+ *
+ * @throws MarketplaceWebService_Exception
+ */
   public function manageReportSchedule($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_ManageReportScheduleRequest) {
-      require_once ('MarketplaceWebService/Model/ManageReportScheduleRequest.php');
-      $request = new MarketplaceWebService_Model_ManageReportScheduleRequest($request);
+    if (!$request instanceof MWS_ManageReportScheduleRequest) {
+      require_once (dirname(__FILE__) . '/Model/ManageReportScheduleRequest.php');
+      $request = new MWS_ManageReportScheduleRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/ManageReportScheduleResponse.php');
+    require_once (dirname(__FILE__) . '/Model/ManageReportScheduleResponse.php');
     $httpResponse = $this->invoke($this->convertManageReportSchedule($request));
-    $response = MarketplaceWebService_Model_ManageReportScheduleResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_ManageReportScheduleResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -723,38 +800,40 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function getReportRequestCount($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetReportRequestCountRequest) {
-      require_once ('MarketplaceWebService/Model/GetReportRequestCountRequest.php');
-      $request = new MarketplaceWebService_Model_GetReportRequestCountRequest($request);
+    if (!$request instanceof MWS_GetReportRequestCountRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetReportRequestCountRequest.php');
+      $request = new MWS_GetReportRequestCountRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetReportRequestCountResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetReportRequestCountResponse.php');
     $httpResponse = $this->invoke($this->convertGetReportRequestCount($request));
-    $response = MarketplaceWebService_Model_GetReportRequestCountResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetReportRequestCountResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
 
-  /**
-   * Get Report Schedule List
-   * returns the list of report schedules
-   *
-   * @see http://docs.amazonwebservices.com/${docPath}GetReportScheduleList.html
-   * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportScheduleListRequest request
-   * or MarketplaceWebService_Model_GetReportScheduleListRequest object itself
-   * @see MarketplaceWebService_Model_GetReportScheduleList
-   * @return MarketplaceWebService_Model_GetReportScheduleListResponse MarketplaceWebService_Model_GetReportScheduleListResponse
-   *
-   * @throws MarketplaceWebService_Exception
-   */
+
+
+/**
+ * Get Report Schedule List
+ * returns the list of report schedules
+ *
+ * @see http://docs.amazonwebservices.com/${docPath}GetReportScheduleList.html
+ * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportScheduleListRequest request
+ * or MarketplaceWebService_Model_GetReportScheduleListRequest object itself
+ * @see MarketplaceWebService_Model_GetReportScheduleList
+ * @return MarketplaceWebService_Model_GetReportScheduleListResponse MarketplaceWebService_Model_GetReportScheduleListResponse
+ *
+ * @throws MarketplaceWebService_Exception
+ */
   public function getReportScheduleList($request)
   {
-    if (!$request instanceof MarketplaceWebService_Model_GetReportScheduleListRequest) {
-      require_once ('MarketplaceWebService/Model/GetReportScheduleListRequest.php');
-      $request = new MarketplaceWebService_Model_GetReportScheduleListRequest($request);
+    if (!$request instanceof MWS_GetReportScheduleListRequest) {
+      require_once (dirname(__FILE__) . '/Model/GetReportScheduleListRequest.php');
+      $request = new MWS_GetReportScheduleListRequest($request);
     }
-    require_once ('MarketplaceWebService/Model/GetReportScheduleListResponse.php');
+    require_once (dirname(__FILE__) . '/Model/GetReportScheduleListResponse.php');
     $httpResponse = $this->invoke($this->convertGetReportScheduleList($request));
-    $response = MarketplaceWebService_Model_GetReportScheduleListResponse::fromXML($httpResponse['ResponseBody']);
+    $response = MWS_GetReportScheduleListResponse::fromXML($httpResponse['ResponseBody']);
     $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
     return $response;
   }
@@ -805,7 +884,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
     	
     // Ensure the endpoint URL is set.
     if (empty($this->config['ServiceURL'])) {
-        throw new MarketplaceWebService_Exception(
+        throw new MWS_Exception(
             array('ErrorCode' => 'InvalidServiceUrl',
                   'Message' => "Missing serviceUrl configuration value. You may obtain a list of valid MWS URLs by consulting the MWS Developer's Guide, or reviewing the sample code published along side this library."));
     }
@@ -830,7 +909,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
           	case 500:
           	case 503:
           		require_once('MarketplaceWebService/Model/ErrorResponse.php');
-		          $errorResponse = MarketplaceWebService_Model_ErrorResponse::fromXML($response['ResponseBody']);
+		          $errorResponse = MWS_ErrorResponse::fromXML($response['ResponseBody']);
 		          
 		          // We will not retry throttling errors since this would just add to the throttling problem.
 		          $shouldRetry = ($errorResponse->getError()->getCode() === 'RequestThrottled')
@@ -852,15 +931,15 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
           /* Rethrow on deserializer error */
         } catch (Exception $e) {
           require_once ('MarketplaceWebService/Exception.php');
-            throw new MarketplaceWebService_Exception(array('Exception' => $e, 'Message' => $e->getMessage()));
+            throw new MWS_Exception(array('Exception' => $e, 'Message' => $e->getMessage()));
         }
 
       } while ($shouldRetry);
 
-    } catch (MarketplaceWebService_Exception $se) {
+    } catch (MWS_Exception $se) {
       throw $se;
     } catch (Exception $t) {
-      throw new MarketplaceWebService_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
+      throw new MWS_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
     }
     return array('ResponseBody' => $response['ResponseBody'], 'ResponseHeaderMetadata' => $response['ResponseHeaderMetadata']);
   }
@@ -888,7 +967,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
     }
     
     require_once ('MarketplaceWebService/Exception.php');
-    return new MarketplaceWebService_Exception($exProps);
+    return new MWS_Exception($exProps);
   }
 
   /**
@@ -921,7 +1000,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
     $parsedHeader = $this->parseHttpHeader($header);
 
     require_once('MarketplaceWebService/Model/ResponseHeaderMetadata.php');
-    $responseHeaderMetadata = new MarketplaceWebService_Model_ResponseHeaderMetadata(
+    $responseHeaderMetadata = new MWS_ResponseHeaderMetadata(
               $parsedHeader['x-mws-request-id'],
               $parsedHeader['x-mws-response-context'],
               $parsedHeader['x-mws-timestamp']);
@@ -971,7 +1050,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
 
     if (!($receivedMd5Hash === $expectedMd5Hash)) {
       require_once ('MarketplaceWebService/Exception.php');
-      throw new MarketplaceWebService_Exception(
+      throw new MWS_Exception(
           array(
             'Message' => 'Received Content-MD5 = ' . $receivedMd5Hash . ' but expected ' . $expectedMd5Hash, 
             'ErrorCode' => 'ContentMD5DoesNotMatch'));
@@ -1087,7 +1166,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
 
       if (is_null($streamHandle) || !is_resource($streamHandle)) {
         require_once ('MarketplaceWebService/Exception.php');
-        throw new MarketplaceWebService_Exception(
+        throw new MWS_Exception(
           array ('Message' => 'Missing stream resource.'));
       }
 

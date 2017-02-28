@@ -19,8 +19,11 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php'); 
-require_once ('MarketplaceWebService/Model/ContentType.php');
+namespace MWS\Model\SubmitFeedRequest;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
+require_once (dirname(__FILE__) . '/Model/ContentType.php');
     
 
 /**
@@ -38,7 +41,7 @@ require_once ('MarketplaceWebService/Model/ContentType.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_SubmitFeedRequest extends MarketplaceWebService_Model
+class MWS_SubmitFeedRequest extends Model
 {
 
 
@@ -64,7 +67,7 @@ class MarketplaceWebService_Model_SubmitFeedRequest extends MarketplaceWebServic
 	
     public function __construct($data = null)
     {
-    	self::$DEFAULT_CONTENT_TYPE = new MarketplaceWebService_Model_ContentType(
+    	self::$DEFAULT_CONTENT_TYPE = new MWS_ContentType(
     		array('ContentType' => 'application/octet-stream'));
     		
         // Here we're setting the content-type field directly to the object, but beware the actual 
@@ -75,12 +78,12 @@ class MarketplaceWebService_Model_SubmitFeedRequest extends MarketplaceWebServic
         'Marketplace' => array('FieldValue' => null, 'FieldType' => 'string'),
         'Merchant' => array('FieldValue' => null, 'FieldType' => 'string'),
         'MWSAuthToken' => array('FieldValue' => null, 'FieldType' => 'string'),
-        'MarketplaceIdList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_IdList'),
+        'MarketplaceIdList' => array('FieldValue' => null, 'FieldType' => 'MWS_IdList'),
         'FeedContent' => array ('FieldValue' => null, 'FieldType' => 'string'),
         'FeedType' => array('FieldValue' => null, 'FieldType' => 'string'),
         'PurgeAndReplace' => array('FieldValue' => null, 'FieldType' => 'bool'),
         'ContentMd5' => array ('FieldValue' => null, 'FieldType' => 'string'),
- 	'ContentType' => array ('FieldValue' => self::$DEFAULT_CONTENT_TYPE, 'FieldType' => 'MarketplaceWebService_Model_ContentType')      
+ 	'ContentType' => array ('FieldValue' => self::$DEFAULT_CONTENT_TYPE, 'FieldType' => 'MWS_ContentType')
         );
         
         parent::__construct($data);
@@ -93,7 +96,7 @@ class MarketplaceWebService_Model_SubmitFeedRequest extends MarketplaceWebServic
     
     private function verifySupportedContentType($supplied) {
     if (!($supplied == self::$DEFAULT_CONTENT_TYPE)) {
-    		throw new MarketplaceWebService_Exception(array('Message' =>
+    		throw new MWS_Exception(array('Message' =>
     			"Unsupported ContentType " .  $supplied->getContentType() . 
     			" ContentType must be " . self::$DEFAULT_CONTENT_TYPE->getContentType()));	
     	}
@@ -273,7 +276,7 @@ class MarketplaceWebService_Model_SubmitFeedRequest extends MarketplaceWebServic
      */
     public function setMarketplaceIdList($value) 
     {
-	$marketplaceIdList = new MarketplaceWebService_Model_IdList();
+	$marketplaceIdList = new MWS_IdList();
 	$marketplaceIdList->setId($value['Id']);
         $this->fields['MarketplaceIdList']['FieldValue'] = $marketplaceIdList;
         return;

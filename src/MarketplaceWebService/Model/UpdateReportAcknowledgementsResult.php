@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\UpdateReportAcknowledgementsResult;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -34,7 +37,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_UpdateReportAcknowledgementsResult extends MarketplaceWebService_Model
+class MWS_UpdateReportAcknowledgementsResult extends Model
 {
 
 
@@ -55,7 +58,7 @@ class MarketplaceWebService_Model_UpdateReportAcknowledgementsResult extends Mar
     {
         $this->fields = array (
         'Count' => array('FieldValue' => null, 'FieldType' => 'int'),
-        'ReportInfo' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebService_Model_ReportInfo')),
+        'ReportInfo' => array('FieldValue' => array(), 'FieldType' => array('MWS_ReportInfo')),
         );
         parent::__construct($data);
     }

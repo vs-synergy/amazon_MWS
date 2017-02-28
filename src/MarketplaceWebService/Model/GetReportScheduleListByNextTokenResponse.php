@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\GetReportScheduleListByNextTokenResponse;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -34,7 +37,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse extends MarketplaceWebService_Model
+class MWS_GetReportScheduleListByNextTokenResponse extends Model
 {
 
 
@@ -54,8 +57,8 @@ class MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse exten
     public function __construct($data = null)
     {
         $this->fields = array (
-        'GetReportScheduleListByNextTokenResult' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_GetReportScheduleListByNextTokenResult'),
-        'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_ResponseMetadata'),
+        'GetReportScheduleListByNextTokenResult' => array('FieldValue' => null, 'FieldType' => 'MWS_GetReportScheduleListByNextTokenResult'),
+        'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
         );
         parent::__construct($data);
     }
@@ -69,15 +72,15 @@ class MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse exten
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
     	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
         $response = $xpath->query('//a:GetReportScheduleListByNextTokenResponse');
         if ($response->length == 1) {
-            return new MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse(($response->item(0))); 
+            return new MWS_GetReportScheduleListByNextTokenResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse from provided XML. 
+            throw new Exception ("Unable to construct MWS_GetReportScheduleListByNextTokenResponse from provided XML. 
                                   Make sure that GetReportScheduleListByNextTokenResponse is a root element");
         }
           

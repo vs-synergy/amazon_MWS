@@ -15,7 +15,12 @@
  * 
  */
 
-class MarketplaceWebService_Model_ResponseHeaderMetadata {
+namespace MWS\Model\ResponseHeaderMetadata;
+use MWS\Model;
+
+
+
+class MWS_ResponseHeaderMetadata {
 
   const REQUEST_ID = 'x-mws-request-id';
   const RESPONSE_CONTEXT = 'x-mws-response-context';

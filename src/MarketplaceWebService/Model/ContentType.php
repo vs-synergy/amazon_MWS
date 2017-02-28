@@ -24,13 +24,18 @@
  * <li>ContentType: string - Possible types: OctetStream</li>
  *
  * </ul>
- */ 
+ */
+
+namespace MWS\Model\ContentType;
+use MWS\Model;
+
+
 
 /* 
  * The only content type that MWS currently supports is octet-stream
  */
 
-class MarketplaceWebService_Model_ContentType  extends MarketplaceWebService_Model {
+class MWS_ContentType  extends Model {
 	
 	public function __construct($data = null) {
         $this->fields = array (

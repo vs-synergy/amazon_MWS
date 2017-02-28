@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\ErrorResponse;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -34,7 +37,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_ErrorResponse extends MarketplaceWebService_Model
+class MWS_ErrorResponse extends Model
 {
 
 
@@ -54,7 +57,7 @@ class MarketplaceWebService_Model_ErrorResponse extends MarketplaceWebService_Mo
     public function __construct($data = null)
     {
         $this->fields = array (
-        'Error' => array('FieldValue' => array(), 'FieldType' => 'MarketplaceWebService_Model_Error'),
+        'Error' => array('FieldValue' => array(), 'FieldType' => 'MWS_Error'),
         'RequestId' => array('FieldValue' => null, 'FieldType' => 'string'),
         );
         parent::__construct($data);
@@ -69,15 +72,15 @@ class MarketplaceWebService_Model_ErrorResponse extends MarketplaceWebService_Mo
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
     	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
         $response = $xpath->query('//a:ErrorResponse');
         if ($response->length == 1) {
-            return new MarketplaceWebService_Model_ErrorResponse(($response->item(0))); 
+            return new MWS_ErrorResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_ErrorResponse from provided XML. 
+            throw new Exception ("Unable to construct MWS_ErrorResponse from provided XML. 
                                   Make sure that ErrorResponse is a root element");
         }
           
