@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\ManageReportScheduleResult;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -34,7 +37,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_ManageReportScheduleResult extends MarketplaceWebService_Model
+class MWS_ManageReportScheduleResult extends Model
 {
 
 
@@ -55,7 +58,7 @@ class MarketplaceWebService_Model_ManageReportScheduleResult extends Marketplace
     {
         $this->fields = array (
         'Count' => array('FieldValue' => null, 'FieldType' => 'int'),
-        'ReportSchedule' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebService_Model_ReportSchedule')),
+        'ReportSchedule' => array('FieldValue' => array(), 'FieldType' => array('MWS_ReportSchedule')),
         );
         parent::__construct($data);
     }

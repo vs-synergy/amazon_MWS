@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\GetFeedSubmissionListRequest;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -40,7 +43,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetFeedSubmissionListRequest extends MarketplaceWebService_Model
+class MWS_GetFeedSubmissionListRequest extends Model
 {
 
 
@@ -69,10 +72,10 @@ class MarketplaceWebService_Model_GetFeedSubmissionListRequest extends Marketpla
         'Marketplace' => array('FieldValue' => null, 'FieldType' => 'string'),
         'Merchant' => array('FieldValue' => null, 'FieldType' => 'string'),
         'MWSAuthToken' => array('FieldValue' => null, 'FieldType' => 'string'),
-        'FeedSubmissionIdList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_IdList'),
+        'FeedSubmissionIdList' => array('FieldValue' => null, 'FieldType' => 'MWS_IdList'),
         'MaxCount' => array('FieldValue' => null, 'FieldType' => 'string'),
-        'FeedTypeList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_TypeList'),
-        'FeedProcessingStatusList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_StatusList'),
+        'FeedTypeList' => array('FieldValue' => null, 'FieldType' => 'MWS_TypeList'),
+        'FeedProcessingStatusList' => array('FieldValue' => null, 'FieldType' => 'MWS_StatusList'),
         'SubmittedFromDate' => array('FieldValue' => null, 'FieldType' => 'DateTime'),
         'SubmittedToDate' => array('FieldValue' => null, 'FieldType' => 'DateTime'),
         );

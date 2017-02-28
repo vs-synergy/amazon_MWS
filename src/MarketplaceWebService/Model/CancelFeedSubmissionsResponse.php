@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\CancelFeedSubmissionsResponse;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -34,7 +37,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_CancelFeedSubmissionsResponse extends MarketplaceWebService_Model
+class MWS_CancelFeedSubmissionsResponse extends Model
 {
 
 
@@ -54,8 +57,8 @@ class MarketplaceWebService_Model_CancelFeedSubmissionsResponse extends Marketpl
     public function __construct($data = null)
     {
         $this->fields = array (
-        'CancelFeedSubmissionsResult' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_CancelFeedSubmissionsResult'),
-        'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_ResponseMetadata'),
+        'CancelFeedSubmissionsResult' => array('FieldValue' => null, 'FieldType' => 'MWS_CancelFeedSubmissionsResult'),
+        'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
         );
         parent::__construct($data);
     }
@@ -69,15 +72,15 @@ class MarketplaceWebService_Model_CancelFeedSubmissionsResponse extends Marketpl
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
     	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
         $response = $xpath->query('//a:CancelFeedSubmissionsResponse');
         if ($response->length == 1) {
-            return new MarketplaceWebService_Model_CancelFeedSubmissionsResponse(($response->item(0))); 
+            return new MWS_CancelFeedSubmissionsResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_CancelFeedSubmissionsResponse from provided XML. 
+            throw new Exception ("Unable to construct MWS_CancelFeedSubmissionsResponse from provided XML. 
                                   Make sure that CancelFeedSubmissionsResponse is a root element");
         }
           

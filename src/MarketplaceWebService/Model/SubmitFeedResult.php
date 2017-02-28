@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\SubmitFeedResult;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -33,7 +36,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_SubmitFeedResult extends MarketplaceWebService_Model
+class MWS_SubmitFeedResult extends Model
 {
 
 
@@ -52,7 +55,7 @@ class MarketplaceWebService_Model_SubmitFeedResult extends MarketplaceWebService
     public function __construct($data = null)
     {
         $this->fields = array (
-        'FeedSubmissionInfo' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_FeedSubmissionInfo'),
+        'FeedSubmissionInfo' => array('FieldValue' => null, 'FieldType' => 'MWS_FeedSubmissionInfo'),
         );
         parent::__construct($data);
     }

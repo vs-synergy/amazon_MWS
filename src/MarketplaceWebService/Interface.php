@@ -20,7 +20,9 @@
  * 
  */
 
-interface  MarketplaceWebService_Interface 
+namespace MWS\MWS_Interface;
+
+interface  MWS_Interface
 {
     
 

@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\CancelReportRequestsResult;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -34,7 +37,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_CancelReportRequestsResult extends MarketplaceWebService_Model
+class MWS_CancelReportRequestsResult extends Model
 {
 
 
@@ -55,7 +58,7 @@ class MarketplaceWebService_Model_CancelReportRequestsResult extends Marketplace
     {
         $this->fields = array (
         'Count' => array('FieldValue' => null, 'FieldType' => 'int'),
-        'ReportRequestInfo' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebService_Model_ReportRequestInfo')),
+        'ReportRequestInfo' => array('FieldValue' => array(), 'FieldType' => array('MWS_ReportRequestInfo')),
         );
         parent::__construct($data);
     }

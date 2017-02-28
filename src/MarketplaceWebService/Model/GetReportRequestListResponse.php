@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\GetReportRequestListResponse;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -34,7 +37,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportRequestListResponse extends MarketplaceWebService_Model
+class MWS_GetReportRequestListResponse extends Model
 {
 
 
@@ -54,8 +57,8 @@ class MarketplaceWebService_Model_GetReportRequestListResponse extends Marketpla
     public function __construct($data = null)
     {
         $this->fields = array (
-        'GetReportRequestListResult' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_GetReportRequestListResult'),
-        'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_ResponseMetadata'),
+        'GetReportRequestListResult' => array('FieldValue' => null, 'FieldType' => 'MWS_GetReportRequestListResult'),
+        'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
         );
         parent::__construct($data);
     }
@@ -69,15 +72,15 @@ class MarketplaceWebService_Model_GetReportRequestListResponse extends Marketpla
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
     	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
         $response = $xpath->query('//a:GetReportRequestListResponse');
         if ($response->length == 1) {
-            return new MarketplaceWebService_Model_GetReportRequestListResponse(($response->item(0))); 
+            return new MWS_GetReportRequestListResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_GetReportRequestListResponse from provided XML. 
+            throw new Exception ("Unable to construct MWS_GetReportRequestListResponse from provided XML. 
                                   Make sure that GetReportRequestListResponse is a root element");
         }
           

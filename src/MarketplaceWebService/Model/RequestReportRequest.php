@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\RequestReportRequest;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -39,7 +42,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_RequestReportRequest extends MarketplaceWebService_Model
+class MWS_RequestReportRequest extends Model
 {
 
 
@@ -67,7 +70,7 @@ class MarketplaceWebService_Model_RequestReportRequest extends MarketplaceWebSer
         'Marketplace' => array('FieldValue' => null, 'FieldType' => 'string'),
         'Merchant' => array('FieldValue' => null, 'FieldType' => 'string'),
         'MWSAuthToken' => array('FieldValue' => null, 'FieldType' => 'string'),
-        'MarketplaceIdList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_IdList'),
+        'MarketplaceIdList' => array('FieldValue' => null, 'FieldType' => 'MWS_IdList'),
         'ReportType' => array('FieldValue' => null, 'FieldType' => 'string'),
         'StartDate' => array('FieldValue' => null, 'FieldType' => 'DateTime'),
         'EndDate' => array('FieldValue' => null, 'FieldType' => 'DateTime'),
@@ -229,7 +232,7 @@ class MarketplaceWebService_Model_RequestReportRequest extends MarketplaceWebSer
      */
     public function setMarketplaceIdList($value) 
     {
-	$marketplaceIdList = new MarketplaceWebService_Model_IdList();
+	$marketplaceIdList = new MWS_IdList();
 	$marketplaceIdList->setId($value['Id']);
         $this->fields['MarketplaceIdList']['FieldValue'] = $marketplaceIdList;
         return;

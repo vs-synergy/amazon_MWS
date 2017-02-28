@@ -1,4 +1,6 @@
 <?php
+
+namespace MWS\RequestType;
 /**
  * There are three types of requests to MWS to configure:
  *   1. Requests containing feed data. SubmitFeed is the only example of this request type.

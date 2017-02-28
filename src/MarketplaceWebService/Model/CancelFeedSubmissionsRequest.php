@@ -19,7 +19,11 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+
+namespace MWS\Model\CancelFeedSubmissionsRequest;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -38,7 +42,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_CancelFeedSubmissionsRequest extends MarketplaceWebService_Model
+class MWS_CancelFeedSubmissionsRequest extends Model
 {
 
 
@@ -65,8 +69,8 @@ class MarketplaceWebService_Model_CancelFeedSubmissionsRequest extends Marketpla
         'Marketplace' => array('FieldValue' => null, 'FieldType' => 'string'),
         'Merchant' => array('FieldValue' => null, 'FieldType' => 'string'),
         'MWSAuthToken' => array('FieldValue' => null, 'FieldType' => 'string'),
-        'FeedSubmissionIdList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_IdList'),
-        'FeedTypeList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_TypeList'),
+        'FeedSubmissionIdList' => array('FieldValue' => null, 'FieldType' => 'MWS_IdList'),
+        'FeedTypeList' => array('FieldValue' => null, 'FieldType' => 'MWS_TypeList'),
         'SubmittedFromDate' => array('FieldValue' => null, 'FieldType' => 'DateTime'),
         'SubmittedToDate' => array('FieldValue' => null, 'FieldType' => 'DateTime'),
         );

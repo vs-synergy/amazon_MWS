@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\GetReportRequestCountRequest;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -38,7 +41,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportRequestCountRequest extends MarketplaceWebService_Model
+class MWS_GetReportRequestCountRequest extends Model
 {
 
 
@@ -65,8 +68,8 @@ class MarketplaceWebService_Model_GetReportRequestCountRequest extends Marketpla
         'Marketplace' => array('FieldValue' => null, 'FieldType' => 'string'),
         'Merchant' => array('FieldValue' => null, 'FieldType' => 'string'),
         'MWSAuthToken' => array('FieldValue' => null, 'FieldType' => 'string'),
-        'ReportTypeList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_TypeList'),
-        'ReportProcessingStatusList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_StatusList'),
+        'ReportTypeList' => array('FieldValue' => null, 'FieldType' => 'MWS_TypeList'),
+        'ReportProcessingStatusList' => array('FieldValue' => null, 'FieldType' => 'MWS_StatusList'),
         'RequestedFromDate' => array('FieldValue' => null, 'FieldType' => 'DateTime'),
         'RequestedToDate' => array('FieldValue' => null, 'FieldType' => 'DateTime'),
         );

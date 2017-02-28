@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\GetReportRequestListResult;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -35,7 +38,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportRequestListResult extends MarketplaceWebService_Model
+class MWS_GetReportRequestListResult extends Model
 {
 
 
@@ -58,7 +61,7 @@ class MarketplaceWebService_Model_GetReportRequestListResult extends Marketplace
         $this->fields = array (
         'NextToken' => array('FieldValue' => null, 'FieldType' => 'string'),
         'HasNext' => array('FieldValue' => null, 'FieldType' => 'bool'),
-        'ReportRequestInfo' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebService_Model_ReportRequestInfo')),
+        'ReportRequestInfo' => array('FieldValue' => array(), 'FieldType' => array('MWS_ReportRequestInfo')),
         );
         parent::__construct($data);
     }

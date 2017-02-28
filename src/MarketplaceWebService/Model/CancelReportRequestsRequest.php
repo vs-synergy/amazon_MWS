@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\CancelReportRequestsRequest;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -39,7 +42,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_CancelReportRequestsRequest extends MarketplaceWebService_Model
+class MWS_CancelReportRequestsRequest extends Model
 {
 
 
@@ -67,9 +70,9 @@ class MarketplaceWebService_Model_CancelReportRequestsRequest extends Marketplac
         'Marketplace' => array('FieldValue' => null, 'FieldType' => 'string'),
         'Merchant' => array('FieldValue' => null, 'FieldType' => 'string'),
         'MWSAuthToken' => array('FieldValue' => null, 'FieldType' => 'string'),
-        'ReportRequestIdList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_IdList'),
-        'ReportTypeList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_TypeList'),
-        'ReportProcessingStatusList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_StatusList'),
+        'ReportRequestIdList' => array('FieldValue' => null, 'FieldType' => 'MWS_IdList'),
+        'ReportTypeList' => array('FieldValue' => null, 'FieldType' => 'MWS_TypeList'),
+        'ReportProcessingStatusList' => array('FieldValue' => null, 'FieldType' => 'MWS_StatusList'),
         'RequestedFromDate' => array('FieldValue' => null, 'FieldType' => 'DateTime'),
         'RequestedToDate' => array('FieldValue' => null, 'FieldType' => 'DateTime'),
         );

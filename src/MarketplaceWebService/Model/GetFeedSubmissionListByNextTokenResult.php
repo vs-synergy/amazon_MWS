@@ -19,7 +19,10 @@
 /**
  *  @see MarketplaceWebService_Model
  */
-require_once ('MarketplaceWebService/Model.php');  
+namespace MWS\Model\GetFeedSubmissionListByNextTokenResult;
+use MWS\Model;
+
+require_once (dirname(__FILE__) . '/../Model.php');
 
     
 
@@ -35,7 +38,7 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResult extends MarketplaceWebService_Model
+class MWS_GetFeedSubmissionListByNextTokenResult extends Model
 {
 
 
@@ -58,7 +61,7 @@ class MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResult extends
         $this->fields = array (
         'NextToken' => array('FieldValue' => null, 'FieldType' => 'string'),
         'HasNext' => array('FieldValue' => null, 'FieldType' => 'bool'),
-        'FeedSubmissionInfo' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebService_Model_FeedSubmissionInfo')),
+        'FeedSubmissionInfo' => array('FieldValue' => array(), 'FieldType' => array('MWS_FeedSubmissionInfo')),
         );
         parent::__construct($data);
     }

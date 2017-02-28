@@ -16,10 +16,12 @@
  * 
  */
 
+namespace MWS;
+
 /**
  * MarketplaceWebService_Model - base class for all model classes
  */ 
-abstract class MarketplaceWebService_Model
+abstract class Model
 {
     
     /** @var array */
@@ -28,7 +30,7 @@ abstract class MarketplaceWebService_Model
     /**
      * Construct new model class
      * 
-     * @param mixed $data - DOMElement or Associative Array to construct from. 
+     * @param mixed $data - \DOMElement or Associative Array to construct from.
      */
     public function __construct($data = null)
     {
@@ -39,7 +41,7 @@ abstract class MarketplaceWebService_Model
                 $this->fromDOMElement($data);
             } else {
                 throw new Exception ("Unable to construct from provided data. 
-                                Please be sure to pass associative array or DOMElement");
+                                Please be sure to pass associative array or \DOMElement");
             }
             
         }
@@ -156,9 +158,9 @@ abstract class MarketplaceWebService_Model
      * 
      * @param DOMElement $dom XML element to construct from
      */
-    private function fromDOMElement(DOMElement $dom)
+    private function fromDOMElement(\DOMElement $dom)
     {
-        $xpath = new DOMXPath($dom->ownerDocument);
+        $xpath = new \DOMXPath($dom->ownerDocument);
         $xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
         
         foreach ($this->fields as $fieldName => $field) {
@@ -166,12 +168,13 @@ abstract class MarketplaceWebService_Model
             if (is_array($fieldType)) {
                 if ($this->isComplexType($fieldType[0])) {
                     $elements = $xpath->query("./a:$fieldName", $dom);
-                    if ($elements->length >= 1) {
-                        require_once (str_replace('_', DIRECTORY_SEPARATOR, $fieldType[0]) . ".php");
-                        foreach ($elements as $element) {
-                            $this->fields[$fieldName]['FieldValue'][] = new $fieldType[0]($element);
-                        }
-                    } 
+                  if ($elements->length >= 1) {
+                    require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType[0]) . ".php");
+                    $namespaced_class = "\\MWS\\Model\\" . str_replace('MWS_', '', $fieldType[0]) . "\\" . $fieldType[0];
+                    foreach ($elements as $element) {
+                      $this->fields[$fieldName]['FieldValue'][] = new $namespaced_class($element);
+                    }
+                  }
                 } else {
                     $elements = $xpath->query("./a:$fieldName", $dom);
                     if ($elements->length >= 1) {
@@ -184,10 +187,11 @@ abstract class MarketplaceWebService_Model
             } else {
                 if ($this->isComplexType($fieldType)) {
                     $elements = $xpath->query("./a:$fieldName", $dom);
-                    if ($elements->length == 1) {
-                        require_once (str_replace('_', DIRECTORY_SEPARATOR, $fieldType) . ".php");
-                        $this->fields[$fieldName]['FieldValue'] = new $fieldType($elements->item(0));
-                    }   
+                  if ($elements->length == 1) {
+                    require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType) . ".php");
+                    $namespaced_class = "\\MWS\\Model\\" . str_replace('MWS_', '', $fieldType) . "\\" . $fieldType;
+                    $this->fields[$fieldName]['FieldValue'] = new $namespaced_class($elements->item(0));
+                  }
                 } else {
                     $element = $xpath->query("./a:$fieldName/text()", $dom);
                     $data = null;
@@ -231,10 +235,15 @@ abstract class MarketplaceWebService_Model
                             $elements =  array($elements);    
                         }
                         if (count ($elements) >= 1) {
-                            require_once (str_replace('_', DIRECTORY_SEPARATOR, $fieldType[0]) . ".php");
-                            foreach ($elements as $element) {
-                                $this->fields[$fieldName]['FieldValue'][] = new $fieldType[0]($element);
-                            }
+
+                          require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType[0]) . ".php");
+                          $namespaced_class = "\\MWS\\Model\\" . str_replace('MWS_', '', $fieldType[0]) . "\\" . $fieldType[0];
+                          foreach ($elements as $element) {
+
+                            $this->fields[$fieldName]['FieldValue'][] = new $namespaced_class($element);
+                          }
+
+
                         }
                     } 
                 } else {
@@ -252,10 +261,11 @@ abstract class MarketplaceWebService_Model
                 }
             } else {
                 if ($this->isComplexType($fieldType)) {
-                    if (array_key_exists($fieldName, $array)) {
-                        require_once (str_replace('_', DIRECTORY_SEPARATOR, $fieldType) . ".php");
-                        $this->fields[$fieldName]['FieldValue'] = new $fieldType($array[$fieldName]);
-                    }   
+                  if (array_key_exists($fieldName, $array)) {
+                    require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType) . ".php");
+                    $namespaced_class = "\\MWS\\Model\\" . str_replace('MWS_', '', $fieldType) . "\\" . $fieldType;
+                    $this->fields[$fieldName]['FieldValue'] = new $namespaced_class($array[$fieldName]);
+                  }
                 } else {
                     if (array_key_exists($fieldName, $array)) {
                         $this->fields[$fieldName]['FieldValue'] = $array[$fieldName];
@@ -274,7 +284,7 @@ abstract class MarketplaceWebService_Model
      */
     private function isComplexType ($fieldType) 
     {
-        return preg_match('/^MarketplaceWebService_Model_/', $fieldType);
+        return preg_match('/^MWS_/', $fieldType);
     }
 
    /**
@@ -294,7 +304,7 @@ abstract class MarketplaceWebService_Model
     * @return TRUE if passed variable is DOMElement
     */
     private function isDOMElement($var) {
-        return $var instanceof DOMElement;
+        return $var instanceof \DOMElement;
     }
 
    /**
