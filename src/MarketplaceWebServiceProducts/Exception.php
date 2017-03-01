@@ -25,7 +25,7 @@ namespace MWS_Products\MWS_Exception;
  * returned by Marketplace Web Service Products service
  *
  */
-class MarketplaceWebServiceProducts_Exception extends \Exception
+class MWS_Exception extends \Exception
 
 {
     /** @var string */
