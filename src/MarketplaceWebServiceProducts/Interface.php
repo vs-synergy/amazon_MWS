@@ -17,7 +17,9 @@
  * Generated: Fri Sep 16 11:49:32 PDT 2016
  */
 
-interface  MarketplaceWebServiceProducts_Interface
+namespace MWS_Products\MWS_Interface;
+
+interface  MWS_Interface
 {
 
     /**

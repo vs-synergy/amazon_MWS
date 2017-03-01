@@ -39,7 +39,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_ASINIdentifier extends MarketplaceWebServiceProducts_Model {
+ class MWS_ASINIdentifier extends Model {
 
     public function __construct($data = null)
     {

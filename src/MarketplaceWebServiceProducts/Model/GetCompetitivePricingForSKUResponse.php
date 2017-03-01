@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetCompetitivePricingForSKUResponse;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,14 +40,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_GetCompetitivePricingForSKUResponse extends MarketplaceWebServiceProducts_Model {
+ class MWS_GetCompetitivePricingForSKUResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'GetCompetitivePricingForSKUResult' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceProducts_Model_GetCompetitivePricingForSKUResult')),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ResponseHeaderMetadata'),
+    'GetCompetitivePricingForSKUResult' => array('FieldValue' => array(), 'FieldType' => array('MWS_GetCompetitivePricingForSKUResult')),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -214,14 +217,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='GetCompetitivePricingForSKUResponse']");
         if ($response->length == 1) {
-            return new MarketplaceWebServiceProducts_Model_GetCompetitivePricingForSKUResponse(($response->item(0))); 
+            return new MWS_GetCompetitivePricingForSKUResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebServiceProducts_Model_GetCompetitivePricingForSKUResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_GetCompetitivePricingForSKUResponse from provided XML. 
                                   Make sure that GetCompetitivePricingForSKUResponse is a root element");
         }
     }

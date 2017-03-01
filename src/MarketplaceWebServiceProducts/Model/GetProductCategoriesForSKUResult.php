@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetProductCategoriesForSKUResult;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -35,12 +38,12 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_GetProductCategoriesForSKUResult extends MarketplaceWebServiceProducts_Model {
+ class MWS_GetProductCategoriesForSKUResult extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'Self' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceProducts_Model_Categories')),
+    'Self' => array('FieldValue' => array(), 'FieldType' => array('MWS_Categories')),
     );
     parent::__construct($data);
     }

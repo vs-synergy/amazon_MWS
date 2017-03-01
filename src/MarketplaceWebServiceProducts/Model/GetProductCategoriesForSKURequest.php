@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetProductCategoriesForSKURequest;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -38,7 +41,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_GetProductCategoriesForSKURequest extends MarketplaceWebServiceProducts_Model {
+ class MWS_GetProductCategoriesForSKURequest extends Model {
 
     public function __construct($data = null)
     {

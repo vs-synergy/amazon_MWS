@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetLowestPricedOffersForASINResult;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -41,7 +44,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForASINResult extends MarketplaceWebServiceProducts_Model {
+ class MWS_GetLowestPricedOffersForASINResult extends Model {
 
     public function __construct($data = null)
     {
@@ -50,9 +53,9 @@ require_once (dirname(__FILE__) . '/../Model.php');
     'ASIN' => array('FieldValue' => null, 'FieldType' => '@string'),
     'ItemCondition' => array('FieldValue' => null, 'FieldType' => '@string'),
     'status' => array('FieldValue' => null, 'FieldType' => '@string'),
-    'Identifier' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_GetLowestPricedOffersAsinIdentifier'),
-    'Summary' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_Summary'),
-    'Offers' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ASINOfferDetailList'),
+    'Identifier' => array('FieldValue' => null, 'FieldType' => 'MWS_GetLowestPricedOffersAsinIdentifier'),
+    'Summary' => array('FieldValue' => null, 'FieldType' => 'MWS_Summary'),
+    'Offers' => array('FieldValue' => null, 'FieldType' => 'MWS_ASINOfferDetailList'),
     );
     parent::__construct($data);
     }

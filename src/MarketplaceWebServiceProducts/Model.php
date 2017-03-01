@@ -42,7 +42,7 @@ abstract class Model
             } elseif ($this->_isDOMElement($data)) {
                 $this->_fromDOMElement($data);
             } else {
-                throw new Exception ("Unable to construct from provided data. Please be sure to pass associative array or DOMElement");
+                throw new \Exception ("Unable to construct from provided data. Please be sure to pass associative array or DOMElement");
             }
         }
     }
@@ -100,9 +100,9 @@ abstract class Model
      * 
      * @param DOMElement $dom XML element to construct from
      */
-    private function _fromDOMElement(DOMElement $dom)
+    private function _fromDOMElement(\DOMElement $dom)
     {
-        $xpath = new DOMXPath($dom->ownerDocument);
+        $xpath = new \DOMXPath($dom->ownerDocument);
 
         foreach ($this->_fields as $fieldName => $field) {
             $fieldType = $field['FieldType'];   
@@ -119,12 +119,13 @@ abstract class Model
                     } else {
                        $elements = $xpath->query("./*[local-name()='$fieldName']", $dom);
                     }
-                    if ($elements->length >= 1) {
-                        require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType[0]) . ".php");
-                        foreach ($elements as $element) {
-                            $this->_fields[$fieldName]['FieldValue'][] = new $fieldType[0]($element);
-                        }
-                    } 
+                  if ($elements->length >= 1) {
+                    require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType[0]) . ".php");
+                    $namespaced_class = "\\MWS_Products\\Model\\" . str_replace('MWS_', '', $fieldType[0]) . "\\" . $fieldType[0];
+                    foreach ($elements as $element) {
+                      $this->_fields[$fieldName]['FieldValue'][] = new $namespaced_class($element);
+                    }
+                  }
                 } else {
                     if (isset($field['ListMemberName'])) {
                         $memberName = $field['ListMemberName'];
@@ -142,10 +143,11 @@ abstract class Model
             } else {
                 if ($this->_isComplexType($fieldType)) {
                     $elements = $xpath->query("./*[local-name()='$fieldName']", $dom);
-                    if ($elements->length == 1) {
-                        require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType) . ".php");
-                        $this->_fields[$fieldName]['FieldValue'] = new $fieldType($elements->item(0));
-                    }   
+                  if ($elements->length == 1) {
+                    require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType) . ".php");
+                    $namespaced_class = "\\MWS_Products\\Model\\" . str_replace('MWS_', '', $fieldType) . "\\" . $fieldType;
+                    $this->_fields[$fieldName]['FieldValue'] = new $namespaced_class($elements->item(0));
+                  }
                 } else {
                     if($fieldType[0] == "@") {
                         $attribute = $xpath->query("./@$fieldName", $dom);
@@ -199,13 +201,13 @@ abstract class Model
                         if (!$this->_isNumericArray($elements)) {
                             $elements =  array($elements);    
                         }
-                        if (count ($elements) >= 1) {
-                            require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType[0]) . ".php");
-
-                            foreach ($elements as $element) {
-                                $this->_fields[$fieldName]['FieldValue'][] = new $fieldType[0]($element);
-                            }
+                      if (count($elements) >= 1) {
+                        require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType[0]) . ".php");
+                        $namespaced_class = "\\MWS_Products\\Model\\" . str_replace('MWS_', '', $fieldType[0]) . "\\" . $fieldType[0];
+                        foreach ($elements as $element) {
+                          $this->_fields[$fieldName]['FieldValue'][] = new $namespaced_class($element);
                         }
+                      }
                     } 
                 } else {
                     if (array_key_exists($fieldName, $array)) {
@@ -222,9 +224,10 @@ abstract class Model
                 }
             } else {
                  if ($this->_isComplexType($fieldType)) {
-                    if (array_key_exists($fieldName, $array)) {
-                        require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType) . ".php");
-                        $this->_fields[$fieldName]['FieldValue'] = new $fieldType($array[$fieldName]);
+                   if (array_key_exists($fieldName, $array)) {
+                     require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType) . ".php");
+                     $namespaced_class = "\\MWS_Products\\Model\\" . str_replace('MWS_', '', $fieldType) . "\\" . $fieldType;
+                     $this->_fields[$fieldName]['FieldValue'] = new $namespaced_class($array[$fieldName]);
                     }   
                  } else {
                     if (array_key_exists($fieldName, $array)) {
@@ -301,12 +304,12 @@ abstract class Model
         $xml = "";
         foreach ($this->_fields as $fieldName => $field) {
             $fieldValue = $field['FieldValue'];
-            if (!is_null($fieldValue) && $field['FieldType'] != "MarketplaceWebServiceProducts_Model_ResponseHeaderMetadata") {
+            if (!is_null($fieldValue) && $field['FieldType'] != "MWS_ResponseHeaderMetadata") {
                 $fieldType = $field['FieldType'];
                 if (is_array($fieldType)) {
                     if ($fieldType[0] == "object") {
                         foreach ($fieldValue as $item) {
-                            $newDoc = new DOMDocument();
+                            $newDoc = new \DOMDocument();
                             $importedNode = $newDoc->importNode($item, true);
                             $newDoc->appendChild($importedNode);
                             $xmlStr = $newDoc->saveXML();
@@ -424,7 +427,7 @@ abstract class Model
     */
     private function _isDOMElement($var)
     {
-        return $var instanceof DOMElement;
+        return $var instanceof \DOMElement;
     }
 
    /**

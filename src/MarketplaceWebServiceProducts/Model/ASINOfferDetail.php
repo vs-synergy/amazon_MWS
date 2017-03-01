@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\ASINOfferDetail;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -44,18 +47,18 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_ASINOfferDetail extends MarketplaceWebServiceProducts_Model {
+ class MWS_ASINOfferDetail extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'SubCondition' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'SellerFeedbackRating' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_SellerFeedbackType'),
-    'ShippingTime' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_DetailedShippingTimeType'),
-    'ListingPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'Points' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_Points'),
-    'Shipping' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'ShipsFrom' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ShipsFromType'),
+    'SellerFeedbackRating' => array('FieldValue' => null, 'FieldType' => 'MWS_SellerFeedbackType'),
+    'ShippingTime' => array('FieldValue' => null, 'FieldType' => 'MWS_DetailedShippingTimeType'),
+    'ListingPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'Points' => array('FieldValue' => null, 'FieldType' => 'MWS_Points'),
+    'Shipping' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'ShipsFrom' => array('FieldValue' => null, 'FieldType' => 'MWS_ShipsFromType'),
     'IsFulfilledByAmazon' => array('FieldValue' => null, 'FieldType' => 'bool'),
     'IsBuyBoxWinner' => array('FieldValue' => null, 'FieldType' => 'bool'),
     'IsFeaturedMerchant' => array('FieldValue' => null, 'FieldType' => 'bool'),

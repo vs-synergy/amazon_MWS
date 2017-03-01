@@ -17,13 +17,15 @@
  * Generated: Fri Sep 16 11:49:32 PDT 2016
  */
 
+namespace MWS_Products\MWS_Exception;
+
 
 /**
  * Marketplace Web Service Products Exception provides details of errors
  * returned by Marketplace Web Service Products service
  *
  */
-class MarketplaceWebServiceProducts_Exception extends Exception
+class MarketplaceWebServiceProducts_Exception extends \Exception
 
 {
     /** @var string */

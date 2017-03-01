@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetMyPriceForSKURequest;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -38,7 +41,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_GetMyPriceForSKURequest extends MarketplaceWebServiceProducts_Model {
+ class MWS_GetMyPriceForSKURequest extends Model {
 
     public function __construct($data = null)
     {
@@ -46,7 +49,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     'SellerId' => array('FieldValue' => null, 'FieldType' => 'string'),
     'MWSAuthToken' => array('FieldValue' => null, 'FieldType' => 'string'),
     'MarketplaceId' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'SellerSKUList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_SellerSKUListType'),
+    'SellerSKUList' => array('FieldValue' => null, 'FieldType' => 'MWS_SellerSKUListType'),
     );
     parent::__construct($data);
     }

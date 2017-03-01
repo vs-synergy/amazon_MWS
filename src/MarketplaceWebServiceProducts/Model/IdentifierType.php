@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\IdentifierType;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -36,13 +39,13 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_IdentifierType extends MarketplaceWebServiceProducts_Model {
+ class MWS_IdentifierType extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'MarketplaceASIN' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ASINIdentifier'),
-    'SKUIdentifier' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_SellerSKUIdentifier'),
+    'MarketplaceASIN' => array('FieldValue' => null, 'FieldType' => 'MWS_ASINIdentifier'),
+    'SKUIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWS_SellerSKUIdentifier'),
     );
     parent::__construct($data);
     }

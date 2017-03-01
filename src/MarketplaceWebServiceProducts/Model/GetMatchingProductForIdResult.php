@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetMatchingProductForIdResult;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -39,13 +42,13 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_GetMatchingProductForIdResult extends MarketplaceWebServiceProducts_Model {
+ class MWS_GetMatchingProductForIdResult extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'Products' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ProductList'),
-    'Error' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_Error'),
+    'Products' => array('FieldValue' => null, 'FieldType' => 'MWS_ProductList'),
+    'Error' => array('FieldValue' => null, 'FieldType' => 'MWS_Error'),
     'Id' => array('FieldValue' => null, 'FieldType' => '@string'),
     'IdType' => array('FieldValue' => null, 'FieldType' => '@string'),
     'status' => array('FieldValue' => null, 'FieldType' => '@string'),

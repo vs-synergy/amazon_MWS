@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\CompetitivePriceType;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -39,13 +42,13 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_CompetitivePriceType extends MarketplaceWebServiceProducts_Model {
+ class MWS_CompetitivePriceType extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'CompetitivePriceId' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'Price' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_PriceType'),
+    'Price' => array('FieldValue' => null, 'FieldType' => 'MWS_PriceType'),
     'condition' => array('FieldValue' => null, 'FieldType' => '@string'),
     'subcondition' => array('FieldValue' => null, 'FieldType' => '@string'),
     'belongsToRequester' => array('FieldValue' => null, 'FieldType' => '@bool'),

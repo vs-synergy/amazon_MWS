@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\FeeDetail;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -40,17 +43,17 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_FeeDetail extends MarketplaceWebServiceProducts_Model {
+ class MWS_FeeDetail extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'FeeType' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'FeeAmount' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'FeePromotion' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'TaxAmount' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'FinalFee' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'IncludedFeeDetailList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_FeeDetailList'),
+    'FeeAmount' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'FeePromotion' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'TaxAmount' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'FinalFee' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'IncludedFeeDetailList' => array('FieldValue' => null, 'FieldType' => 'MWS_FeeDetailList'),
     );
     parent::__construct($data);
     }

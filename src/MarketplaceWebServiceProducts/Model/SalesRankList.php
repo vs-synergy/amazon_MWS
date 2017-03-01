@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\SalesRankList;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -35,12 +38,12 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_SalesRankList extends MarketplaceWebServiceProducts_Model {
+ class MWS_SalesRankList extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'SalesRank' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceProducts_Model_SalesRankType')),
+    'SalesRank' => array('FieldValue' => array(), 'FieldType' => array('MWS_SalesRankType')),
     );
     parent::__construct($data);
     }

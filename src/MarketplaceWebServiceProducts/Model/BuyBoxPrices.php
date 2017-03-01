@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\BuyBoxPrices;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -35,12 +38,12 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_BuyBoxPrices extends MarketplaceWebServiceProducts_Model {
+ class MWS_BuyBoxPrices extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'BuyBoxPrice' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceProducts_Model_BuyBoxPriceType')),
+    'BuyBoxPrice' => array('FieldValue' => array(), 'FieldType' => array('MWS_BuyBoxPriceType')),
     );
     parent::__construct($data);
     }

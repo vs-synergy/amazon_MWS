@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\ProductList;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -35,12 +38,12 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_ProductList extends MarketplaceWebServiceProducts_Model {
+ class MWS_ProductList extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'Product' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceProducts_Model_Product')),
+    'Product' => array('FieldValue' => array(), 'FieldType' => array('MWS_Product')),
     );
     parent::__construct($data);
     }

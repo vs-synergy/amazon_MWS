@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\LowestPriceType;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -40,17 +43,17 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_LowestPriceType extends MarketplaceWebServiceProducts_Model {
+ class MWS_LowestPriceType extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'condition' => array('FieldValue' => null, 'FieldType' => '@string'),
     'fulfillmentChannel' => array('FieldValue' => null, 'FieldType' => '@string'),
-    'LandedPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'ListingPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'Shipping' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'Points' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_Points'),
+    'LandedPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'ListingPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'Shipping' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'Points' => array('FieldValue' => null, 'FieldType' => 'MWS_Points'),
     );
     parent::__construct($data);
     }

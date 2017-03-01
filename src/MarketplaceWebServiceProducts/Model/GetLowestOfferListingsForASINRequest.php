@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetLowestOfferListingsForASINRequest;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -40,7 +43,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_GetLowestOfferListingsForASINRequest extends MarketplaceWebServiceProducts_Model {
+ class MWS_GetLowestOfferListingsForASINRequest extends Model {
 
     public function __construct($data = null)
     {
@@ -48,7 +51,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     'SellerId' => array('FieldValue' => null, 'FieldType' => 'string'),
     'MWSAuthToken' => array('FieldValue' => null, 'FieldType' => 'string'),
     'MarketplaceId' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'ASINList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ASINListType'),
+    'ASINList' => array('FieldValue' => null, 'FieldType' => 'MWS_ASINListType'),
     'ItemCondition' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ExcludeMe' => array('FieldValue' => null, 'FieldType' => 'bool'),
     );

@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\OfferType;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -41,13 +44,13 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_OfferType extends MarketplaceWebServiceProducts_Model {
+ class MWS_OfferType extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'BuyingPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_PriceType'),
-    'RegularPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
+    'BuyingPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_PriceType'),
+    'RegularPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
     'FulfillmentChannel' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ItemCondition' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ItemSubCondition' => array('FieldValue' => null, 'FieldType' => 'string'),

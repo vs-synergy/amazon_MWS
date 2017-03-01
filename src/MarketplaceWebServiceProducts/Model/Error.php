@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\Error;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -38,7 +41,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_Error extends MarketplaceWebServiceProducts_Model {
+ class MWS_Error extends Model {
 
     public function __construct($data = null)
     {
@@ -46,7 +49,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     'Type' => array('FieldValue' => null, 'FieldType' => 'string'),
     'Code' => array('FieldValue' => null, 'FieldType' => 'string'),
     'Message' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'Detail' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ErrorDetail'),
+    'Detail' => array('FieldValue' => null, 'FieldType' => 'MWS_ErrorDetail'),
     );
     parent::__construct($data);
     }

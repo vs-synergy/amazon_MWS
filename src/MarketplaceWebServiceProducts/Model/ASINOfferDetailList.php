@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\ASINOfferDetailList;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -35,12 +38,12 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_ASINOfferDetailList extends MarketplaceWebServiceProducts_Model {
+ class MWS_ASINOfferDetailList extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'Offer' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceProducts_Model_ASINOfferDetail')),
+    'Offer' => array('FieldValue' => array(), 'FieldType' => array('MWS_ASINOfferDetail')),
     );
     parent::__construct($data);
     }

@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\LowestPrices;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -35,12 +38,12 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_LowestPrices extends MarketplaceWebServiceProducts_Model {
+ class MWS_LowestPrices extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'LowestPrice' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceProducts_Model_LowestPriceType')),
+    'LowestPrice' => array('FieldValue' => array(), 'FieldType' => array('MWS_LowestPriceType')),
     );
     parent::__construct($data);
     }

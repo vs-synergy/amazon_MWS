@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\ListMatchingProductsResponse;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,14 +40,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_ListMatchingProductsResponse extends MarketplaceWebServiceProducts_Model {
+ class MWS_ListMatchingProductsResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'ListMatchingProductsResult' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ListMatchingProductsResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ResponseHeaderMetadata'),
+    'ListMatchingProductsResult' => array('FieldValue' => null, 'FieldType' => 'MWS_ListMatchingProductsResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -196,14 +199,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='ListMatchingProductsResponse']");
         if ($response->length == 1) {
-            return new MarketplaceWebServiceProducts_Model_ListMatchingProductsResponse(($response->item(0))); 
+            return new MWS_ListMatchingProductsResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebServiceProducts_Model_ListMatchingProductsResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_ListMatchingProductsResponse from provided XML. 
                                   Make sure that ListMatchingProductsResponse is a root element");
         }
     }

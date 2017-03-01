@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\FeesEstimateResultList;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -35,12 +38,12 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_FeesEstimateResultList extends MarketplaceWebServiceProducts_Model {
+ class MWS_FeesEstimateResultList extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'FeesEstimateResult' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceProducts_Model_FeesEstimateResult')),
+    'FeesEstimateResult' => array('FieldValue' => array(), 'FieldType' => array('MWS_FeesEstimateResult')),
     );
     parent::__construct($data);
     }

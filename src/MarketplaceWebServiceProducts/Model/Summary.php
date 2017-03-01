@@ -21,6 +21,9 @@
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\Summary;
+use MWS_Products\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -41,18 +44,18 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MarketplaceWebServiceProducts_Model_Summary extends MarketplaceWebServiceProducts_Model {
+ class MWS_Summary extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'TotalOfferCount' => array('FieldValue' => null, 'FieldType' => 'int'),
-    'NumberOfOffers' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_NumberOfOffers'),
-    'LowestPrices' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_LowestPrices'),
-    'BuyBoxPrices' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_BuyBoxPrices'),
-    'ListPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'SuggestedLowerPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'BuyBoxEligibleOffers' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_BuyBoxEligibleOffers'),
+    'NumberOfOffers' => array('FieldValue' => null, 'FieldType' => 'MWS_NumberOfOffers'),
+    'LowestPrices' => array('FieldValue' => null, 'FieldType' => 'MWS_LowestPrices'),
+    'BuyBoxPrices' => array('FieldValue' => null, 'FieldType' => 'MWS_BuyBoxPrices'),
+    'ListPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'SuggestedLowerPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'BuyBoxEligibleOffers' => array('FieldValue' => null, 'FieldType' => 'MWS_BuyBoxEligibleOffers'),
     );
     parent::__construct($data);
     }
