@@ -1,6 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\MWS_Interface;
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -19,7 +17,7 @@ namespace MarketplaceWebServiceProducts\MWS_Interface;
  * Generated: Fri Sep 16 11:49:32 PDT 2016
  */
 
-interface  MWS_Interface
+interface  MarketplaceWebServiceProducts_Interface
 {
 
     /**

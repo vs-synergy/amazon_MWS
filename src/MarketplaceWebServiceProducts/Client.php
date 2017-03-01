@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\Client;
-use MarketplaceWebServiceProducts\MWS_Interface\MWS_Interface;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -24,13 +20,13 @@ use MarketplaceWebServiceProducts\MWS_Interface\MWS_Interface;
 /**
  *  @see MarketplaceWebServiceProducts_Interface
  */
-
+require_once (dirname(__FILE__) . '/Interface.php');
 
 /**
  * MarketplaceWebServiceProducts_Client is an implementation of MarketplaceWebServiceProducts
  *
  */
-class MarketplaceWebServiceProducts_Client implements MWS_Interface
+class MarketplaceWebServiceProducts_Client implements MarketplaceWebServiceProducts_Interface
 {
 
     const SERVICE_VERSION = '2011-10-01';
