@@ -8,7 +8,7 @@ namespace MWS\RequestType;
  *      matching the request type.
  *   3. 'Regular' POST requests. This represents the multitude of MWS requests.
  */
-final class RequestType {
+final class MWS_RequestType {
   const POST_UPLOAD = 'POST_UPLOAD';
   const POST_DOWNLOAD = 'POST_DOWNLOAD';
   const POST_DEFAULT = 'POST_DEFAULT';

@@ -40,7 +40,7 @@ abstract class Model
             } elseif ($this->isDOMElement($data)) {
                 $this->fromDOMElement($data);
             } else {
-                throw new Exception ("Unable to construct from provided data. 
+                throw new \Exception ("Unable to construct from provided data. 
                                 Please be sure to pass associative array or \DOMElement");
             }
             
@@ -198,7 +198,7 @@ abstract class Model
                     if ($element->length == 1) {
                     	switch($this->fields[$fieldName]['FieldType']) {
                     		case 'DateTime':
-                    			$data = new DateTime($element->item(0)->data, 
+                    			$data = new \DateTime($element->item(0)->data,
                     				new DateTimeZone('UTC'));
                     			break;
                     		case 'bool':

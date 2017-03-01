@@ -15,7 +15,7 @@
  *  Generated: Thu May 07 13:07:36 PDT 2009
  * 
  */
-
+namespace MWS\MWS_Exception;
 
 /**
  * Marketplace Web Service  Exception provides details of errors 
