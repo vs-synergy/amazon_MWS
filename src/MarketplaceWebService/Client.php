@@ -19,8 +19,11 @@
 /**
  *  @see MarketplaceWebService_Interface
  */
+namespace MWS\Client;
 
+use MWS\RequestType\MWS_RequestType as RequestType;
 use MWS\MWS_Interface\MWS_Interface;
+use MWS\MWS_Exception\MWS_Exception;
 
 use MWS\Model\GetReportRequest\MWS_GetReportRequest;
 use MWS\Model\GetReportResponse\MWS_GetReportResponse;
@@ -929,7 +932,7 @@ class MWS_Client implements MWS_Interface
           }
           
           /* Rethrow on deserializer error */
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
           require_once ('MarketplaceWebService/Exception.php');
             throw new MWS_Exception(array('Exception' => $e, 'Message' => $e->getMessage()));
         }
@@ -938,7 +941,7 @@ class MWS_Client implements MWS_Interface
 
     } catch (MWS_Exception $se) {
       throw $se;
-    } catch (Exception $t) {
+    } catch (\Exception $t) {
       throw new MWS_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
     }
     return array('ResponseBody' => $response['ResponseBody'], 'ResponseHeaderMetadata' => $response['ResponseHeaderMetadata']);
@@ -1247,7 +1250,7 @@ class MWS_Client implements MWS_Interface
   private function addRequiredParameters(array $parameters)
   {
     $parameters['AWSAccessKeyId'] = $this->awsAccessKeyId;
-    $parameters['Timestamp'] = $this->getFormattedTimestamp(new DateTime('now', new DateTimeZone('UTC')));
+    $parameters['Timestamp'] = $this->getFormattedTimestamp(new \DateTime('now', new DateTimeZone('UTC')));
     $parameters['Version'] = self::SERVICE_VERSION;
     $parameters['SignatureVersion'] = $this->config['SignatureVersion'];
     if ($parameters['SignatureVersion'] > 1) {
@@ -1309,7 +1312,7 @@ class MWS_Client implements MWS_Interface
       $parameters['SignatureMethod'] = $algorithm;
       $stringToSign = $this->calculateStringToSignV2($parameters);
     } else {
-      throw new Exception("Invalid Signature Version specified");
+      throw new \Exception("Invalid Signature Version specified");
     }
     return $this->sign($stringToSign, $key, $algorithm);
   }
@@ -1360,7 +1363,7 @@ class MWS_Client implements MWS_Interface
     } else if ($algorithm === 'HmacSHA256') {
       $hash = 'sha256';
     } else {
-      throw new Exception ("Non-supported signing method specified");
+      throw new \Exception ("Non-supported signing method specified");
     }
     return base64_encode(
     hash_hmac($hash, $data, $key, true)
@@ -1373,13 +1376,13 @@ class MWS_Client implements MWS_Interface
   private function getFormattedTimestamp($dateTime) {
     if (!is_object($dateTime)) {
       if (is_string($dateTime)) {
-        $dateTime = new DateTime($dateTime);
+        $dateTime = new \DateTime($dateTime);
       } else {
-        throw new Exception("Invalid date value.");
+        throw new \Exception("Invalid date value.");
       }
     } else {
-      if (!($dateTime instanceof DateTime)) {
-        throw new Exception("Invalid date value.");
+      if (!($dateTime instanceof \DateTime)) {
+        throw new \Exception("Invalid date value.");
       }
     }
     
