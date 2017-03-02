@@ -99,9 +99,9 @@ abstract class Model
      * 
      * @param DOMElement $dom XML element to construct from
      */
-    private function _fromDOMElement(DOMElement $dom)
+    private function _fromDOMElement(\DOMElement $dom)
     {
-        $xpath = new DOMXPath($dom->ownerDocument);
+        $xpath = new \DOMXPath($dom->ownerDocument);
 
         foreach ($this->_fields as $fieldName => $field) {
             $fieldType = $field['FieldType'];   
@@ -304,7 +304,7 @@ abstract class Model
                 if (is_array($fieldType)) {
                     if ($fieldType[0] == "object") {
                         foreach ($fieldValue as $item) {
-                            $newDoc = new DOMDocument();
+                            $newDoc = new \DOMDocument();
                             $importedNode = $newDoc->importNode($item, true);
                             $newDoc->appendChild($importedNode);
                             $xmlStr = $newDoc->saveXML();
@@ -420,7 +420,7 @@ abstract class Model
     */
     private function _isDOMElement($var)
     {
-        return $var instanceof DOMElement;
+        return $var instanceof \DOMElement;
     }
 
    /**
