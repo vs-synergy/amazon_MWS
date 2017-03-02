@@ -119,10 +119,11 @@ abstract class Model
                        $elements = $xpath->query("./*[local-name()='$fieldName']", $dom);
                     }
                     if ($elements->length >= 1) {
-                        require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType[0]) . ".php");
-                        foreach ($elements as $element) {
-                            $this->_fields[$fieldName]['FieldValue'][] = new $fieldType[0]($element);
-                        }
+                      require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType[0]) . ".php");
+                      $namespaced_class = "\\MWS_Recommendations\\Model\\" . str_replace('MWS_', '', $fieldType[0]) . "\\" . $fieldType[0];
+                      foreach ($elements as $element) {
+                        $this->_fields[$fieldName]['FieldValue'][] = new $namespaced_class($element);
+                      }
                     } 
                 } else {
                     if (isset($field['ListMemberName'])) {
@@ -142,8 +143,9 @@ abstract class Model
                 if ($this->_isComplexType($fieldType)) {
                     $elements = $xpath->query("./*[local-name()='$fieldName']", $dom);
                     if ($elements->length == 1) {
-                        require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType) . ".php");
-                        $this->_fields[$fieldName]['FieldValue'] = new $fieldType($elements->item(0));
+                      require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType) . ".php");
+                      $namespaced_class = "\\MWS_Recommendations\\Model\\" . str_replace('MWS_', '', $fieldType) . "\\" . $fieldType;
+                      $this->_fields[$fieldName]['FieldValue'] = new $namespaced_class($elements->item(0));
                     }   
                 } else {
                     if($fieldType[0] == "@") {
@@ -195,11 +197,11 @@ abstract class Model
                             $elements =  array($elements);    
                         }
                         if (count ($elements) >= 1) {
-                            require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType[0]) . ".php");
-
-                            foreach ($elements as $element) {
-                                $this->_fields[$fieldName]['FieldValue'][] = new $fieldType[0]($element);
-                            }
+                          require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType[0]) . ".php");
+                          $namespaced_class = "\\MWS_Recommendations\\Model\\" . str_replace('MWS_', '', $fieldType[0]) . "\\" . $fieldType[0];
+                          foreach ($elements as $element) {
+                            $this->_fields[$fieldName]['FieldValue'][] = new $namespaced_class($element);
+                          }
                         }
                     } 
                 } else {
@@ -217,10 +219,11 @@ abstract class Model
                 }
             } else {
                  if ($this->_isComplexType($fieldType)) {
-                    if (array_key_exists($fieldName, $array)) {
-                        require_once (dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType) . ".php");
-                        $this->_fields[$fieldName]['FieldValue'] = new $fieldType($array[$fieldName]);
-                    }   
+                   if (array_key_exists($fieldName, $array)) {
+                     require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Model' . DIRECTORY_SEPARATOR . str_replace('MWS_', '', $fieldType) . ".php");
+                     $namespaced_class = "\\MWS_Recommendations\\Model\\" . str_replace('MWS_', '', $fieldType) . "\\" . $fieldType;
+                     $this->_fields[$fieldName]['FieldValue'] = new $namespaced_class($array[$fieldName]);
+                   }
                  } else {
                     if (array_key_exists($fieldName, $array)) {
                         $this->_fields[$fieldName]['FieldValue'] = $array[$fieldName];
