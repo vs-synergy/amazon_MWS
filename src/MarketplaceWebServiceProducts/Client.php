@@ -19,8 +19,9 @@
 
 namespace MWS_Products\Client;
 
-use MWS_Products\MWS_Exception;
+use MWS_Products\MWS_Exception\MWS_Exception;
 use MWS_Products\MWS_Interface\MWS_Interface;
+use MWS_Products\Model\ResponseHeaderMetadata\MWS_ResponseHeaderMetadata;
 
 use MWS_Products\Model\GetCompetitivePricingForASINRequest\MWS_GetCompetitivePricingForASINRequest;
 use MWS_Products\Model\GetCompetitivePricingForASINResponse\MWS_GetCompetitivePricingForASINResponse;
@@ -1090,7 +1091,7 @@ class MWS_Client implements MWS_Interface
         try {
             if (empty($this->_config['ServiceURL'])) {
                 require_once (dirname(__FILE__) . '/Exception.php');
-                throw new MarketplaceWebServiceProducts_Exception(
+                throw new MWS_Exception(
                     array ('ErrorCode' => 'InvalidServiceURL',
                            'Message' => "Missing serviceUrl configuration value. You may obtain a list of valid MWS URLs by consulting the MWS Developer's Guide, or reviewing the sample code published along side this library."));
             }
@@ -1109,11 +1110,11 @@ class MWS_Client implements MWS_Interface
                 throw $this->_reportAnyErrors($response['ResponseBody'],
                     $status, $response['ResponseHeaderMetadata']);
             }
-        } catch (MarketplaceWebServiceProducts_Exception $se) {
+        } catch (MWS_Exception $se) {
             throw $se;
         } catch (\Exception $t) {
             require_once (dirname(__FILE__) . '/Exception.php');
-            throw new MarketplaceWebServiceProducts_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
+            throw new MWS_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
         }
     }
 
@@ -1140,7 +1141,7 @@ class MWS_Client implements MWS_Interface
         }
 
         require_once (dirname(__FILE__) . '/Exception.php');
-        return new MarketplaceWebServiceProducts_Exception($exProps);
+        return new MWS_Exception($exProps);
     }
 
 
@@ -1208,7 +1209,7 @@ class MWS_Client implements MWS_Interface
             $exProps["Message"] = curl_error($ch);
             $exProps["ErrorType"] = "HTTP";
             curl_close($ch);
-            throw new MarketplaceWebServiceProducts_Exception($exProps);
+            throw new MWS_Exception($exProps);
         }
 
         curl_close($ch);
@@ -1259,7 +1260,7 @@ class MWS_Client implements MWS_Interface
             require_once (dirname(__FILE__) . '/Exception.php');
             $exProps["Message"] = "Failed to parse valid HTTP response (" . $response . ")";
             $exProps["ErrorType"] = "HTTP";
-            throw new MarketplaceWebServiceProducts_Exception($exProps);
+            throw new MWS_Exception($exProps);
         }
 
         return array(

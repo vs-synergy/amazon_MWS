@@ -64,7 +64,7 @@ class MWS_Exception extends \Exception
         parent::__construct($this->_message);
         if (array_key_exists("Exception", $errorInfo)) {
             $exception = $errorInfo["Exception"];
-            if ($exception instanceof MarketplaceWebServiceProducts_Exception) {
+            if ($exception instanceof MWS_Exception) {
                 $this->_statusCode = $exception->getStatusCode();
                 $this->_errorCode = $exception->getErrorCode();
                 $this->_errorType = $exception->getErrorType();

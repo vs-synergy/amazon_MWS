@@ -405,7 +405,7 @@ abstract class Model
      */
     private function _isComplexType ($fieldType) 
     {
-        return preg_match("/^MarketplaceWebServiceProducts_/", $fieldType);
+        return preg_match("/^MWS_/", $fieldType);
     }
 
    /**
