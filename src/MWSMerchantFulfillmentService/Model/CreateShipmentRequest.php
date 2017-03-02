@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\CreateShipmentRequest;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -40,14 +43,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_CreateShipmentRequest extends MWSMerchantFulfillmentService_Model {
+ class MWS_CreateShipmentRequest extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'SellerId' => array('FieldValue' => null, 'FieldType' => 'string'),
     'MWSAuthToken' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'ShipmentRequestDetails' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ShipmentRequestDetails'),
+    'ShipmentRequestDetails' => array('FieldValue' => null, 'FieldType' => 'MWS_ShipmentRequestDetails'),
     'ShippingServiceId' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ShippingServiceOfferId' => array('FieldValue' => null, 'FieldType' => 'string'),
     'HazmatType' => array('FieldValue' => null, 'FieldType' => 'string'),

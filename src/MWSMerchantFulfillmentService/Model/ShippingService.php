@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\ShippingService;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -44,7 +47,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_ShippingService extends MWSMerchantFulfillmentService_Model {
+ class MWS_ShippingService extends Model {
 
     public function __construct($data = null)
     {
@@ -56,8 +59,8 @@ require_once (dirname(__FILE__) . '/../Model.php');
     'ShipDate' => array('FieldValue' => null, 'FieldType' => 'string'),
     'EarliestEstimatedDeliveryDate' => array('FieldValue' => null, 'FieldType' => 'string'),
     'LatestEstimatedDeliveryDate' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'Rate' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_CurrencyAmount'),
-    'ShippingServiceOptions' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ShippingServiceOptions'),
+    'Rate' => array('FieldValue' => null, 'FieldType' => 'MWS_CurrencyAmount'),
+    'ShippingServiceOptions' => array('FieldValue' => null, 'FieldType' => 'MWS_ShippingServiceOptions'),
     'AvailableLabelFormats' => array('FieldValue' => array(), 'FieldType' => array('string'), 'ListMemberName' => 'LabelFormat'),
     );
     parent::__construct($data);

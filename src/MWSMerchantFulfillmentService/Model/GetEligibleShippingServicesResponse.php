@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\GetEligibleShippingServicesResponse;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,14 +40,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_GetEligibleShippingServicesResponse extends MWSMerchantFulfillmentService_Model {
+ class MWS_GetEligibleShippingServicesResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'GetEligibleShippingServicesResult' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_GetEligibleShippingServicesResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ResponseHeaderMetadata'),
+    'GetEligibleShippingServicesResult' => array('FieldValue' => null, 'FieldType' => 'MWS_GetEligibleShippingServicesResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -196,14 +199,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='GetEligibleShippingServicesResponse']");
         if ($response->length == 1) {
-            return new MWSMerchantFulfillmentService_Model_GetEligibleShippingServicesResponse(($response->item(0))); 
+            return new MWS_GetEligibleShippingServicesResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MWSMerchantFulfillmentService_Model_GetEligibleShippingServicesResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_GetEligibleShippingServicesResponse from provided XML. 
                                   Make sure that GetEligibleShippingServicesResponse is a root element");
         }
     }

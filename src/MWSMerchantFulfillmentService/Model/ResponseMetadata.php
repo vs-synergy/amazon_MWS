@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\ResponseMetadata;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -35,7 +38,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_ResponseMetadata extends MWSMerchantFulfillmentService_Model {
+ class MWS_ResponseMetadata extends Model {
 
     public function __construct($data = null)
     {

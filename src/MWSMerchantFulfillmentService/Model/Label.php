@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\Label;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -39,14 +42,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_Label extends MWSMerchantFulfillmentService_Model {
+ class MWS_Label extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'CustomTextForLabel' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'Dimensions' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_LabelDimensions'),
-    'FileContents' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_FileContents'),
+    'Dimensions' => array('FieldValue' => null, 'FieldType' => 'MWS_LabelDimensions'),
+    'FileContents' => array('FieldValue' => null, 'FieldType' => 'MWS_FileContents'),
     'LabelFormat' => array('FieldValue' => null, 'FieldType' => 'string'),
     'StandardIdForLabel' => array('FieldValue' => null, 'FieldType' => 'string'),
     );

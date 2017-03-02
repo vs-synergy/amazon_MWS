@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\CancelShipmentResult;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -35,12 +38,12 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_CancelShipmentResult extends MWSMerchantFulfillmentService_Model {
+ class MWS_CancelShipmentResult extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'Shipment' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_Shipment'),
+    'Shipment' => array('FieldValue' => null, 'FieldType' => 'MWS_Shipment'),
     );
     parent::__construct($data);
     }

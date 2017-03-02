@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\ShipmentRequestDetails;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -44,21 +47,21 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_ShipmentRequestDetails extends MWSMerchantFulfillmentService_Model {
+ class MWS_ShipmentRequestDetails extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'AmazonOrderId' => array('FieldValue' => null, 'FieldType' => 'string'),
     'SellerOrderId' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'ItemList' => array('FieldValue' => array(), 'FieldType' => array('MWSMerchantFulfillmentService_Model_Item'), 'ListMemberName' => 'Item'),
-    'ShipFromAddress' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_Address'),
-    'PackageDimensions' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_PackageDimensions'),
-    'Weight' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_Weight'),
+    'ItemList' => array('FieldValue' => array(), 'FieldType' => array('MWS_Item'), 'ListMemberName' => 'Item'),
+    'ShipFromAddress' => array('FieldValue' => null, 'FieldType' => 'MWS_Address'),
+    'PackageDimensions' => array('FieldValue' => null, 'FieldType' => 'MWS_PackageDimensions'),
+    'Weight' => array('FieldValue' => null, 'FieldType' => 'MWS_Weight'),
     'MustArriveByDate' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ShipDate' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'ShippingServiceOptions' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ShippingServiceOptions'),
-    'LabelCustomization' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_LabelCustomization'),
+    'ShippingServiceOptions' => array('FieldValue' => null, 'FieldType' => 'MWS_ShippingServiceOptions'),
+    'LabelCustomization' => array('FieldValue' => null, 'FieldType' => 'MWS_LabelCustomization'),
     );
     parent::__construct($data);
     }
