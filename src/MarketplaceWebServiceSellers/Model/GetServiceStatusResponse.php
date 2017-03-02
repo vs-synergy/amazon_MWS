@@ -199,9 +199,9 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='GetServiceStatusResponse']");
         if ($response->length == 1) {
             return new MWS_GetServiceStatusResponse(($response->item(0)));
