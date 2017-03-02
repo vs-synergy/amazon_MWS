@@ -17,13 +17,13 @@
  * Generated: Thu Jun 18 19:29:34 GMT 2015
  */
 
-
+namespace MWS_Recommendations\MWS_Exception;
 /**
  * MWS Recommendations Section Service Exception provides details of errors
  * returned by MWS Recommendations Section Service service
  *
  */
-class MWSRecommendationsSectionService_Exception extends Exception
+class MWS_Exception extends \Exception
 
 {
     /** @var string */
@@ -62,7 +62,7 @@ class MWSRecommendationsSectionService_Exception extends Exception
         parent::__construct($this->_message);
         if (array_key_exists("Exception", $errorInfo)) {
             $exception = $errorInfo["Exception"];
-            if ($exception instanceof MWSRecommendationsSectionService_Exception) {
+            if ($exception instanceof MWS_Exception) {
                 $this->_statusCode = $exception->getStatusCode();
                 $this->_errorCode = $exception->getErrorCode();
                 $this->_errorType = $exception->getErrorType();

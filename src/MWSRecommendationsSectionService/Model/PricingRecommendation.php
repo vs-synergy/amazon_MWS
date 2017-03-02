@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\PricingRecommendation;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -51,23 +54,23 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_PricingRecommendation extends MWSRecommendationsSectionService_Model {
+ class MWS_PricingRecommendation extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'LastUpdated' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'ItemIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ProductIdentifier'),
+    'ItemIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWS_ProductIdentifier'),
     'ItemName' => array('FieldValue' => null, 'FieldType' => 'string'),
     'Condition' => array('FieldValue' => null, 'FieldType' => 'string'),
     'SubCondition' => array('FieldValue' => null, 'FieldType' => 'string'),
     'FulfillmentChannel' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'YourPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_Price'),
-    'LowestPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_Price'),
-    'PriceDifferenceToLowPrice' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_Price'),
-    'MedianPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_Price'),
-    'LowestMerchantFulfilledOfferPrice' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_Price'),
-    'LowestAmazonFulfilledOfferPrice' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_Price'),
+    'YourPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWS_Price'),
+    'LowestPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWS_Price'),
+    'PriceDifferenceToLowPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_Price'),
+    'MedianPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWS_Price'),
+    'LowestMerchantFulfilledOfferPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_Price'),
+    'LowestAmazonFulfilledOfferPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_Price'),
     'NumberOfOffers' => array('FieldValue' => null, 'FieldType' => 'int'),
     'NumberOfMerchantFulfilledOffers' => array('FieldValue' => null, 'FieldType' => 'int'),
     'NumberOfAmazonFulfilledOffers' => array('FieldValue' => null, 'FieldType' => 'int'),

@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\AdvertisingRecommendation;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -46,19 +49,19 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_AdvertisingRecommendation extends MWSRecommendationsSectionService_Model {
+ class MWS_AdvertisingRecommendation extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'LastUpdated' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'ItemIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ProductIdentifier'),
+    'ItemIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWS_ProductIdentifier'),
     'ItemName' => array('FieldValue' => null, 'FieldType' => 'string'),
     'BrandName' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ProductCategory' => array('FieldValue' => null, 'FieldType' => 'string'),
     'SalesRank' => array('FieldValue' => null, 'FieldType' => 'int'),
-    'YourPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_Price'),
-    'LowestPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_Price'),
+    'YourPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWS_Price'),
+    'LowestPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWS_Price'),
     'AvailableQuantity' => array('FieldValue' => null, 'FieldType' => 'int'),
     'SalesForTheLast30Days' => array('FieldValue' => null, 'FieldType' => 'int'),
     'RecommendationId' => array('FieldValue' => null, 'FieldType' => 'string'),

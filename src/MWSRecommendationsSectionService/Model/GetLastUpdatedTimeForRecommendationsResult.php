@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\GetLastUpdatedTimeForRecommendationsResult;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -40,7 +43,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_GetLastUpdatedTimeForRecommendationsResult extends MWSRecommendationsSectionService_Model {
+ class MWS_GetLastUpdatedTimeForRecommendationsResult extends Model {
 
     public function __construct($data = null)
     {

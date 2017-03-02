@@ -1,4 +1,6 @@
 <?php
+
+namespace MWS_Recommendations;
 /*******************************************************************************
  * Copyright 2009-2015 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -20,7 +22,7 @@
 /**
  * MWSRecommendationsSectionService_Model - base class for all model classes
  */
-abstract class MWSRecommendationsSectionService_Model
+abstract class Model
 {
 
     /** @var array */
@@ -39,7 +41,7 @@ abstract class MWSRecommendationsSectionService_Model
             } elseif ($this->_isDOMElement($data)) {
                 $this->_fromDOMElement($data);
             } else {
-                throw new Exception ("Unable to construct from provided data. Please be sure to pass associative array or DOMElement");
+                throw new \Exception ("Unable to construct from provided data. Please be sure to pass associative array or DOMElement");
             }
         }
     }
@@ -97,9 +99,9 @@ abstract class MWSRecommendationsSectionService_Model
      * 
      * @param DOMElement $dom XML element to construct from
      */
-    private function _fromDOMElement(DOMElement $dom)
+    private function _fromDOMElement(\DOMElement $dom)
     {
-        $xpath = new DOMXPath($dom->ownerDocument);
+        $xpath = new \DOMXPath($dom->ownerDocument);
 
         foreach ($this->_fields as $fieldName => $field) {
             $fieldType = $field['FieldType'];   
@@ -294,12 +296,12 @@ abstract class MWSRecommendationsSectionService_Model
         $xml = "";
         foreach ($this->_fields as $fieldName => $field) {
             $fieldValue = $field['FieldValue'];
-            if (!is_null($fieldValue) && $field['FieldType'] != "MWSRecommendationsSectionService_Model_ResponseHeaderMetadata") {
+            if (!is_null($fieldValue) && $field['FieldType'] != "MWS_ResponseHeaderMetadata") {
                 $fieldType = $field['FieldType'];
                 if (is_array($fieldType)) {
                     if ($fieldType[0] == "object") {
                         foreach ($fieldValue as $item) {
-                            $newDoc = new DOMDocument();
+                            $newDoc = new \DOMDocument();
                             $importedNode = $newDoc->importNode($item, true);
                             $newDoc->appendChild($importedNode);
                             $xmlStr = $newDoc->saveXML();
@@ -393,7 +395,7 @@ abstract class MWSRecommendationsSectionService_Model
      */
     private function _isComplexType ($fieldType) 
     {
-        return preg_match("/^MWSRecommendationsSectionService_/", $fieldType);
+        return preg_match("/^MWS_/", $fieldType);
     }
 
    /**
@@ -415,7 +417,7 @@ abstract class MWSRecommendationsSectionService_Model
     */
     private function _isDOMElement($var)
     {
-        return $var instanceof DOMElement;
+        return $var instanceof \DOMElement;
     }
 
    /**

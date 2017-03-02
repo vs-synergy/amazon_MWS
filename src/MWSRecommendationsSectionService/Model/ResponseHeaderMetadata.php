@@ -17,7 +17,9 @@
  * Generated: Thu Jun 18 19:29:34 GMT 2015
  */
 
-class MWSRecommendationsSectionService_Model_ResponseHeaderMetadata {
+namespace MWS_Recommendations\Model\ResponseHeaderMetadata;
+
+class MWS_ResponseHeaderMetadata {
 
   const REQUEST_ID = 'x-mws-request-id';
   const RESPONSE_CONTEXT = 'x-mws-response-context';

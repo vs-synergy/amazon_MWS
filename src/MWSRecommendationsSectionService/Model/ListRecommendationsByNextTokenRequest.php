@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\ListRecommendationsByNextTokenRequest;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,7 +40,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_ListRecommendationsByNextTokenRequest extends MWSRecommendationsSectionService_Model {
+ class MWS_ListRecommendationsByNextTokenRequest extends Model {
 
     public function __construct($data = null)
     {

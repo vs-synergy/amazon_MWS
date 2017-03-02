@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\ListingQualityRecommendation;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -41,7 +44,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_ListingQualityRecommendation extends MWSRecommendationsSectionService_Model {
+ class MWS_ListingQualityRecommendation extends Model {
 
     public function __construct($data = null)
     {
@@ -49,7 +52,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     'QualitySet' => array('FieldValue' => null, 'FieldType' => 'string'),
     'DefectGroup' => array('FieldValue' => null, 'FieldType' => 'string'),
     'DefectAttribute' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'ItemIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ProductIdentifier'),
+    'ItemIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWS_ProductIdentifier'),
     'ItemName' => array('FieldValue' => null, 'FieldType' => 'string'),
     'RecommendationId' => array('FieldValue' => null, 'FieldType' => 'string'),
     'RecommendationReason' => array('FieldValue' => null, 'FieldType' => 'string'),

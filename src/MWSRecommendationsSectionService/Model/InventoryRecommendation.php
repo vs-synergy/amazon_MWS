@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\InventoryRecommendation;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -48,13 +51,13 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_InventoryRecommendation extends MWSRecommendationsSectionService_Model {
+ class MWS_InventoryRecommendation extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'LastUpdated' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'ItemIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ProductIdentifier'),
+    'ItemIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWS_ProductIdentifier'),
     'ItemName' => array('FieldValue' => null, 'FieldType' => 'string'),
     'FulfillmentChannel' => array('FieldValue' => null, 'FieldType' => 'string'),
     'SalesForTheLast14Days' => array('FieldValue' => null, 'FieldType' => 'int'),
