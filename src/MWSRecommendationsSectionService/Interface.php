@@ -17,7 +17,9 @@
  * Generated: Thu Jun 18 19:29:34 GMT 2015
  */
 
-interface  MWSRecommendationsSectionService_Interface
+namespace MWS_Recommendations\MWS_Interface;
+
+interface  MWS_Interface
 {
 
     /**

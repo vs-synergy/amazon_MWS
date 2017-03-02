@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\ResponseMetadata;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -35,7 +38,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_ResponseMetadata extends MWSRecommendationsSectionService_Model {
+ class MWS_ResponseMetadata extends Model {
 
     public function __construct($data = null)
     {

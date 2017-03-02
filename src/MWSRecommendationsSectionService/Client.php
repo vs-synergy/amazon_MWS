@@ -17,6 +17,24 @@
  * Generated: Thu Jun 18 19:29:34 GMT 2015
  */
 
+namespace MWS_Recommendations\Client;
+
+use MWS_Recommendations\MWS_Interface\MWS_Interface;
+use MWS_Recommendations\MWS_Exception\MWS_Exception;
+use MWS_Recommendations\Model\ResponseHeaderMetadata\MWS_ResponseHeaderMetadata;
+
+use MWS_Recommendations\Model\GetLastUpdatedTimeForRecommendationsRequest\MWS_GetLastUpdatedTimeForRecommendationsRequest;
+use MWS_Recommendations\Model\GetLastUpdatedTimeForRecommendationsResponse\MWS_GetLastUpdatedTimeForRecommendationsResponse;
+
+use MWS_Recommendations\Model\ListRecommendationsRequest\MWS_ListRecommendationsRequest;
+use MWS_Recommendations\Model\ListRecommendationsResponse\MWS_ListRecommendationsResponse;
+
+use MWS_Recommendations\Model\ListRecommendationsByNextTokenRequest\MWS_ListRecommendationsByNextTokenRequest;
+use MWS_Recommendations\Model\ListRecommendationsByNextTokenResponse\MWS_ListRecommendationsByNextTokenResponse;
+
+use MWS_Recommendations\Model\GetServiceStatusRequest\MWS_GetServiceStatusRequest;
+use MWS_Recommendations\Model\GetServiceStatusResponse\MWS_GetServiceStatusResponse;
+
 /**
  *  @see MWSRecommendationsSectionService_Interface
  */
@@ -26,7 +44,7 @@ require_once (dirname(__FILE__) . '/Interface.php');
  * MWSRecommendationsSectionService_Client is an implementation of MWSRecommendationsSectionService
  *
  */
-class MWSRecommendationsSectionService_Client implements MWSRecommendationsSectionService_Interface
+class MWS_Client implements MWS_Interface
 {
 
     const SERVICE_VERSION = '2013-04-01';
@@ -65,16 +83,16 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
      */
     public function getLastUpdatedTimeForRecommendations($request)
     {
-        if (!($request instanceof MWSRecommendationsSectionService_Model_GetLastUpdatedTimeForRecommendationsRequest)) {
+        if (!($request instanceof MWS_GetLastUpdatedTimeForRecommendationsRequest)) {
             require_once (dirname(__FILE__) . '/Model/GetLastUpdatedTimeForRecommendationsRequest.php');
-            $request = new MWSRecommendationsSectionService_Model_GetLastUpdatedTimeForRecommendationsRequest($request);
+            $request = new MWS_GetLastUpdatedTimeForRecommendationsRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetLastUpdatedTimeForRecommendations';
         $httpResponse = $this->_invoke($parameters);
 
         require_once (dirname(__FILE__) . '/Model/GetLastUpdatedTimeForRecommendationsResponse.php');
-        $response = MWSRecommendationsSectionService_Model_GetLastUpdatedTimeForRecommendationsResponse::fromXML($httpResponse['ResponseBody']);
+        $response = MWS_GetLastUpdatedTimeForRecommendationsResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
     }
@@ -113,16 +131,16 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
      */
     public function listRecommendations($request)
     {
-        if (!($request instanceof MWSRecommendationsSectionService_Model_ListRecommendationsRequest)) {
+        if (!($request instanceof MWS_ListRecommendationsRequest)) {
             require_once (dirname(__FILE__) . '/Model/ListRecommendationsRequest.php');
-            $request = new MWSRecommendationsSectionService_Model_ListRecommendationsRequest($request);
+            $request = new MWS_ListRecommendationsRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'ListRecommendations';
         $httpResponse = $this->_invoke($parameters);
 
         require_once (dirname(__FILE__) . '/Model/ListRecommendationsResponse.php');
-        $response = MWSRecommendationsSectionService_Model_ListRecommendationsResponse::fromXML($httpResponse['ResponseBody']);
+        $response = MWS_ListRecommendationsResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
     }
@@ -167,16 +185,16 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
      */
     public function listRecommendationsByNextToken($request)
     {
-        if (!($request instanceof MWSRecommendationsSectionService_Model_ListRecommendationsByNextTokenRequest)) {
+        if (!($request instanceof MWS_ListRecommendationsByNextTokenRequest)) {
             require_once (dirname(__FILE__) . '/Model/ListRecommendationsByNextTokenRequest.php');
-            $request = new MWSRecommendationsSectionService_Model_ListRecommendationsByNextTokenRequest($request);
+            $request = new MWS_ListRecommendationsByNextTokenRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'ListRecommendationsByNextToken';
         $httpResponse = $this->_invoke($parameters);
 
         require_once (dirname(__FILE__) . '/Model/ListRecommendationsByNextTokenResponse.php');
-        $response = MWSRecommendationsSectionService_Model_ListRecommendationsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
+        $response = MWS_ListRecommendationsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
     }
@@ -215,16 +233,16 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
      */
     public function getServiceStatus($request)
     {
-        if (!($request instanceof MWSRecommendationsSectionService_Model_GetServiceStatusRequest)) {
+        if (!($request instanceof MWS_GetServiceStatusRequest)) {
             require_once (dirname(__FILE__) . '/Model/GetServiceStatusRequest.php');
-            $request = new MWSRecommendationsSectionService_Model_GetServiceStatusRequest($request);
+            $request = new MWS_GetServiceStatusRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetServiceStatus';
         $httpResponse = $this->_invoke($parameters);
 
         require_once (dirname(__FILE__) . '/Model/GetServiceStatusResponse.php');
-        $response = MWSRecommendationsSectionService_Model_GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
+        $response = MWS_GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
     }
@@ -295,11 +313,11 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
 
     private function constructUserAgentHeader($applicationName, $applicationVersion, $attributes = null) {
         if (is_null($applicationName) || $applicationName === "") {
-            throw new InvalidArgumentException('$applicationName cannot be null');
+            throw new \InvalidArgumentException('$applicationName cannot be null');
         }
 
         if (is_null($applicationVersion) || $applicationVersion === "") {
-            throw new InvalidArgumentException('$applicationVersion cannot be null');
+            throw new \InvalidArgumentException('$applicationVersion cannot be null');
         }
 
         $userAgent = 
@@ -316,7 +334,7 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
 
         foreach ($attributes as $key => $value) {
             if (empty($value)) {
-                throw new InvalidArgumentException("Value for $key cannot be null or empty.");
+                throw new \InvalidArgumentException("Value for $key cannot be null or empty.");
             }
 
             $userAgent .= '; '
@@ -410,7 +428,7 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
         try {
             if (empty($this->_config['ServiceURL'])) {
                 require_once (dirname(__FILE__) . '/Exception.php');
-                throw new MWSRecommendationsSectionService_Exception(
+                throw new MWS_Exception(
                     array ('ErrorCode' => 'InvalidServiceURL',
                            'Message' => "Missing serviceUrl configuration value. You may obtain a list of valid MWS URLs by consulting the MWS Developer's Guide, or reviewing the sample code published along side this library."));
             }
@@ -429,18 +447,18 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
                 throw $this->_reportAnyErrors($response['ResponseBody'],
                     $status, $response['ResponseHeaderMetadata']);
             }
-        } catch (MWSRecommendationsSectionService_Exception $se) {
+        } catch (MWS_Exception $se) {
             throw $se;
-        } catch (Exception $t) {
+        } catch (\Exception $t) {
             require_once (dirname(__FILE__) . '/Exception.php');
-            throw new MWSRecommendationsSectionService_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
+            throw new MWS_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
         }
     }
 
     /**
      * Look for additional error strings in the response and return formatted exception
      */
-    private function _reportAnyErrors($responseBody, $status, $responseHeaderMetadata, Exception $e =  null)
+    private function _reportAnyErrors($responseBody, $status, $responseHeaderMetadata, \Exception $e =  null)
     {
         $exProps = array();
         $exProps["StatusCode"] = $status;
@@ -460,7 +478,7 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
         }
 
         require_once (dirname(__FILE__) . '/Exception.php');
-        return new MWSRecommendationsSectionService_Exception($exProps);
+        return new MWS_Exception($exProps);
     }
 
 
@@ -528,7 +546,7 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
             $exProps["Message"] = curl_error($ch);
             $exProps["ErrorType"] = "HTTP";
             curl_close($ch);
-            throw new MWSRecommendationsSectionService_Exception($exProps);
+            throw new MWS_Exception($exProps);
         }
 
         curl_close($ch);
@@ -579,7 +597,7 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
             require_once (dirname(__FILE__) . '/Exception.php');
             $exProps["Message"] = "Failed to parse valid HTTP response (" . $response . ")";
             $exProps["ErrorType"] = "HTTP";
-            throw new MWSRecommendationsSectionService_Exception($exProps);
+            throw new MWS_Exception($exProps);
         }
 
         return array(
@@ -641,7 +659,7 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
         }
  
         require_once(dirname(__FILE__) . '/Model/ResponseHeaderMetadata.php');
-        return new MWSRecommendationsSectionService_Model_ResponseHeaderMetadata(
+        return new MWS_ResponseHeaderMetadata(
           $headers['x-mws-request-id'],
           $headers['x-mws-response-context'],
           $headers['x-mws-timestamp'],
@@ -743,7 +761,7 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
             $parameters['SignatureMethod'] = $algorithm;
             $stringToSign = $this->_calculateStringToSignV2($parameters);
         } else {
-            throw new Exception("Invalid Signature Version specified");
+            throw new \Exception("Invalid Signature Version specified");
         }
         return $this->_sign($stringToSign, $key, $algorithm);
     }
@@ -786,7 +804,7 @@ class MWSRecommendationsSectionService_Client implements MWSRecommendationsSecti
         } else if ($algorithm === 'HmacSHA256') {
             $hash = 'sha256';
         } else {
-            throw new Exception ("Non-supported signing method specified");
+            throw new \Exception ("Non-supported signing method specified");
         }
         return base64_encode(
             hash_hmac($hash, $data, $key, true)

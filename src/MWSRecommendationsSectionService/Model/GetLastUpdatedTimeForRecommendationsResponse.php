@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\GetLastUpdatedTimeForRecommendationsResponse;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,14 +40,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_GetLastUpdatedTimeForRecommendationsResponse extends MWSRecommendationsSectionService_Model {
+ class MWS_GetLastUpdatedTimeForRecommendationsResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'GetLastUpdatedTimeForRecommendationsResult' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_GetLastUpdatedTimeForRecommendationsResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ResponseHeaderMetadata'),
+    'GetLastUpdatedTimeForRecommendationsResult' => array('FieldValue' => null, 'FieldType' => 'MWS_GetLastUpdatedTimeForRecommendationsResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -196,14 +199,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='GetLastUpdatedTimeForRecommendationsResponse']");
         if ($response->length == 1) {
-            return new MWSRecommendationsSectionService_Model_GetLastUpdatedTimeForRecommendationsResponse(($response->item(0))); 
+            return new MWS_GetLastUpdatedTimeForRecommendationsResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MWSRecommendationsSectionService_Model_GetLastUpdatedTimeForRecommendationsResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_GetLastUpdatedTimeForRecommendationsResponse from provided XML. 
                                   Make sure that GetLastUpdatedTimeForRecommendationsResponse is a root element");
         }
     }

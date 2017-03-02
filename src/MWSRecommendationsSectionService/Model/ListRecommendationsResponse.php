@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\ListRecommendationsResponse;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,14 +40,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_ListRecommendationsResponse extends MWSRecommendationsSectionService_Model {
+ class MWS_ListRecommendationsResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'ListRecommendationsResult' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ListRecommendationsResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ResponseHeaderMetadata'),
+    'ListRecommendationsResult' => array('FieldValue' => null, 'FieldType' => 'MWS_ListRecommendationsResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -196,14 +199,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='ListRecommendationsResponse']");
         if ($response->length == 1) {
-            return new MWSRecommendationsSectionService_Model_ListRecommendationsResponse(($response->item(0))); 
+            return new MWS_ListRecommendationsResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MWSRecommendationsSectionService_Model_ListRecommendationsResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_ListRecommendationsResponse from provided XML. 
                                   Make sure that ListRecommendationsResponse is a root element");
         }
     }

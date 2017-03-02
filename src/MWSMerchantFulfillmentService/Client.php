@@ -20,7 +20,7 @@
 /**
  *  @see MWSMerchantFulfillmentService_Interface
  */
-namespace MWS_Orders\Client;
+namespace MWS_Fulfillment\Client;
 
 use MWS_Fulfillment\Model\CancelShipmentRequest\MWS_CancelShipmentRequest;
 use MWS_Fulfillment\Model\CancelShipmentResponse\MWS_CancelShipmentResponse;

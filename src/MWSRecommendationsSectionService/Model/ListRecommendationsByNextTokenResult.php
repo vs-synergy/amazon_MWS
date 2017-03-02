@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\ListRecommendationsByNextTokenResult;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -42,18 +45,18 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_ListRecommendationsByNextTokenResult extends MWSRecommendationsSectionService_Model {
+ class MWS_ListRecommendationsByNextTokenResult extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'InventoryRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWSRecommendationsSectionService_Model_InventoryRecommendation'), 'ListMemberName' => 'member'),
-    'SelectionRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWSRecommendationsSectionService_Model_SelectionRecommendation'), 'ListMemberName' => 'member'),
-    'PricingRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWSRecommendationsSectionService_Model_PricingRecommendation'), 'ListMemberName' => 'member'),
-    'FulfillmentRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWSRecommendationsSectionService_Model_FulfillmentRecommendation'), 'ListMemberName' => 'member'),
-    'ListingQualityRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWSRecommendationsSectionService_Model_ListingQualityRecommendation'), 'ListMemberName' => 'member'),
-    'GlobalSellingRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWSRecommendationsSectionService_Model_GlobalSellingRecommendation'), 'ListMemberName' => 'member'),
-    'AdvertisingRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWSRecommendationsSectionService_Model_AdvertisingRecommendation'), 'ListMemberName' => 'member'),
+    'InventoryRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWS_InventoryRecommendation'), 'ListMemberName' => 'member'),
+    'SelectionRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWS_SelectionRecommendation'), 'ListMemberName' => 'member'),
+    'PricingRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWS_PricingRecommendation'), 'ListMemberName' => 'member'),
+    'FulfillmentRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWS_FulfillmentRecommendation'), 'ListMemberName' => 'member'),
+    'ListingQualityRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWS_ListingQualityRecommendation'), 'ListMemberName' => 'member'),
+    'GlobalSellingRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWS_GlobalSellingRecommendation'), 'ListMemberName' => 'member'),
+    'AdvertisingRecommendations' => array('FieldValue' => array(), 'FieldType' => array('MWS_AdvertisingRecommendation'), 'ListMemberName' => 'member'),
     'NextToken' => array('FieldValue' => null, 'FieldType' => 'string'),
     );
     parent::__construct($data);

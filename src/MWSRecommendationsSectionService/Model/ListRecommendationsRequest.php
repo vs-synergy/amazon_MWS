@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\ListRecommendationsRequest;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -39,7 +42,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_ListRecommendationsRequest extends MWSRecommendationsSectionService_Model {
+ class MWS_ListRecommendationsRequest extends Model {
 
     public function __construct($data = null)
     {
@@ -48,7 +51,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     'MWSAuthToken' => array('FieldValue' => null, 'FieldType' => 'string'),
     'SellerId' => array('FieldValue' => null, 'FieldType' => 'string'),
     'RecommendationCategory' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'CategoryQueryList' => array('FieldValue' => array(), 'FieldType' => array('MWSRecommendationsSectionService_Model_CategoryQuery'), 'ListMemberName' => 'CategoryQuery'),
+    'CategoryQueryList' => array('FieldValue' => array(), 'FieldType' => array('MWS_CategoryQuery'), 'ListMemberName' => 'CategoryQuery'),
     );
     parent::__construct($data);
     }

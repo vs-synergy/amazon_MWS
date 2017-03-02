@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\ItemDimensions;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -38,15 +41,15 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_ItemDimensions extends MWSRecommendationsSectionService_Model {
+ class MWS_ItemDimensions extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'Height' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_DimensionMeasure'),
-    'Width' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_DimensionMeasure'),
-    'Length' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_DimensionMeasure'),
-    'Weight' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_WeightMeasure'),
+    'Height' => array('FieldValue' => null, 'FieldType' => 'MWS_DimensionMeasure'),
+    'Width' => array('FieldValue' => null, 'FieldType' => 'MWS_DimensionMeasure'),
+    'Length' => array('FieldValue' => null, 'FieldType' => 'MWS_DimensionMeasure'),
+    'Weight' => array('FieldValue' => null, 'FieldType' => 'MWS_WeightMeasure'),
     );
     parent::__construct($data);
     }

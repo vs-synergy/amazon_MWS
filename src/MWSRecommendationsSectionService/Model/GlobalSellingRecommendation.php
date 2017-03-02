@@ -21,6 +21,9 @@
  *  @see MWSRecommendationsSectionService_Model
  */
 
+namespace MWS_Recommendations\Model\GlobalSellingRecommendation;
+use MWS_Recommendations\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -48,23 +51,23 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSRecommendationsSectionService_Model_GlobalSellingRecommendation extends MWSRecommendationsSectionService_Model {
+ class MWS_GlobalSellingRecommendation extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'LastUpdated' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'ItemIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ProductIdentifier'),
+    'ItemIdentifier' => array('FieldValue' => null, 'FieldType' => 'MWS_ProductIdentifier'),
     'ItemName' => array('FieldValue' => null, 'FieldType' => 'string'),
     'BrandName' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ProductCategory' => array('FieldValue' => null, 'FieldType' => 'string'),
     'SalesRank' => array('FieldValue' => null, 'FieldType' => 'int'),
-    'BuyboxPrice' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_Price'),
+    'BuyboxPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_Price'),
     'NumberOfOffers' => array('FieldValue' => null, 'FieldType' => 'int'),
     'NumberOfOffersFulfilledByAmazon' => array('FieldValue' => null, 'FieldType' => 'int'),
     'AverageCustomerReview' => array('FieldValue' => null, 'FieldType' => 'float'),
     'NumberOfCustomerReviews' => array('FieldValue' => null, 'FieldType' => 'int'),
-    'ItemDimensions' => array('FieldValue' => null, 'FieldType' => 'MWSRecommendationsSectionService_Model_ItemDimensions'),
+    'ItemDimensions' => array('FieldValue' => null, 'FieldType' => 'MWS_ItemDimensions'),
     'RecommendationId' => array('FieldValue' => null, 'FieldType' => 'string'),
     'RecommendationReason' => array('FieldValue' => null, 'FieldType' => 'string'),
     );
