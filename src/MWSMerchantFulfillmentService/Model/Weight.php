@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\Weight;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -36,7 +39,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_Weight extends MWSMerchantFulfillmentService_Model {
+ class MWS_Weight extends Model {
 
     public function __construct($data = null)
     {

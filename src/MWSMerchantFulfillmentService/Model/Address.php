@@ -1,8 +1,4 @@
 <?php
-
-namespace MWSMerchantFulfillmentService\Address;
-use MWSMerchantFulfillmentService;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -24,7 +20,10 @@ use MWSMerchantFulfillmentService;
 /**
  *  @see MWSMerchantFulfillmentService_Model
  */
+namespace MWS_Fulfillment\Model\Address;
+use MWS_Fulfillment\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -48,7 +47,7 @@ use MWSMerchantFulfillmentService;
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_Address extends MWSMerchantFulfillmentService\MWS_Model {
+ class MWS_Address extends Model {
 
     public function __construct($data = null)
     {

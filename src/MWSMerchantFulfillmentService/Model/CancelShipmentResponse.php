@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\CancelShipmentResponse;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,14 +40,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_CancelShipmentResponse extends MWSMerchantFulfillmentService_Model {
+ class MWS_CancelShipmentResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'CancelShipmentResult' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_CancelShipmentResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ResponseHeaderMetadata'),
+    'CancelShipmentResult' => array('FieldValue' => null, 'FieldType' => 'MWS_CancelShipmentResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -196,14 +199,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='CancelShipmentResponse']");
         if ($response->length == 1) {
-            return new MWSMerchantFulfillmentService_Model_CancelShipmentResponse(($response->item(0))); 
+            return new MWS_CancelShipmentResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MWSMerchantFulfillmentService_Model_CancelShipmentResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_CancelShipmentResponse from provided XML. 
                                   Make sure that CancelShipmentResponse is a root element");
         }
     }

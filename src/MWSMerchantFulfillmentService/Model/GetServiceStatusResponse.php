@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\GetServiceStatusResponse;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,14 +40,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_GetServiceStatusResponse extends MWSMerchantFulfillmentService_Model {
+ class MWS_GetServiceStatusResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'GetServiceStatusResult' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_GetServiceStatusResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ResponseHeaderMetadata'),
+    'GetServiceStatusResult' => array('FieldValue' => null, 'FieldType' => 'MWS_GetServiceStatusResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -196,14 +199,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='GetServiceStatusResponse']");
         if ($response->length == 1) {
-            return new MWSMerchantFulfillmentService_Model_GetServiceStatusResponse(($response->item(0))); 
+            return new MWS_GetServiceStatusResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MWSMerchantFulfillmentService_Model_GetServiceStatusResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_GetServiceStatusResponse from provided XML. 
                                   Make sure that GetServiceStatusResponse is a root element");
         }
     }

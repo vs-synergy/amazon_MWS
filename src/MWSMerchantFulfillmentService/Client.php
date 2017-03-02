@@ -20,13 +20,33 @@
 /**
  *  @see MWSMerchantFulfillmentService_Interface
  */
+namespace MWS_Orders\Client;
+
+use MWS_Fulfillment\Model\CancelShipmentRequest\MWS_CancelShipmentRequest;
+use MWS_Fulfillment\Model\CancelShipmentResponse\MWS_CancelShipmentResponse;
+
+use MWS_Fulfillment\Model\CreateShipmentRequest\MWS_CreateShipmentRequest;
+use MWS_Fulfillment\Model\CreateShipmentResponse\MWS_CreateShipmentResponse;
+
+use MWS_Fulfillment\Model\GetEligibleShippingServicesRequest\MWS_GetEligibleShippingServicesRequest;
+use MWS_Fulfillment\Model\GetEligibleShippingServicesResponse\MWS_GetEligibleShippingServicesResponse;
+
+use MWS_Fulfillment\Model\GetShipmentRequest\MWS_GetShipmentRequest;
+use MWS_Fulfillment\Model\GetShipmentResponse\MWS_GetShipmentResponse;
+
+use MWS_Fulfillment\Model\GetServiceStatusRequest\MWS_GetServiceStatusRequest;
+use MWS_Fulfillment\Model\GetServiceStatusResponse\MWS_GetServiceStatusResponse;
+
+use MWS_Fulfillment\MWS_Exception\MWS_Exception;
+use MWS_Fulfillment\Model\ResponseHeaderMetadata\MWS_ResponseHeaderMetadata;
+
 require_once (dirname(__FILE__) . '/Interface.php');
 
 /**
  * MWSMerchantFulfillmentService_Client is an implementation of MWSMerchantFulfillmentService
  *
  */
-class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentService_Interface
+class MWS_Client implements MWS_Interface
 {
 
     const SERVICE_VERSION = '2015-06-01';
@@ -65,16 +85,16 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
      */
     public function cancelShipment($request)
     {
-        if (!($request instanceof MWSMerchantFulfillmentService_Model_CancelShipmentRequest)) {
+        if (!($request instanceof MWS_CancelShipmentRequest)) {
             require_once (dirname(__FILE__) . '/Model/CancelShipmentRequest.php');
-            $request = new MWSMerchantFulfillmentService_Model_CancelShipmentRequest($request);
+            $request = new MWS_CancelShipmentRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'CancelShipment';
         $httpResponse = $this->_invoke($parameters);
 
         require_once (dirname(__FILE__) . '/Model/CancelShipmentResponse.php');
-        $response = MWSMerchantFulfillmentService_Model_CancelShipmentResponse::fromXML($httpResponse['ResponseBody']);
+        $response = MWS_CancelShipmentResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
     }
@@ -114,16 +134,16 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
      */
     public function createShipment($request)
     {
-        if (!($request instanceof MWSMerchantFulfillmentService_Model_CreateShipmentRequest)) {
+        if (!($request instanceof MWS_CreateShipmentRequest)) {
             require_once (dirname(__FILE__) . '/Model/CreateShipmentRequest.php');
-            $request = new MWSMerchantFulfillmentService_Model_CreateShipmentRequest($request);
+            $request = new MWS_CreateShipmentRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'CreateShipment';
         $httpResponse = $this->_invoke($parameters);
 
         require_once (dirname(__FILE__) . '/Model/CreateShipmentResponse.php');
-        $response = MWSMerchantFulfillmentService_Model_CreateShipmentResponse::fromXML($httpResponse['ResponseBody']);
+        $response = MWS_CreateShipmentResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
     }
@@ -176,16 +196,16 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
      */
     public function getEligibleShippingServices($request)
     {
-        if (!($request instanceof MWSMerchantFulfillmentService_Model_GetEligibleShippingServicesRequest)) {
+        if (!($request instanceof MWS_GetEligibleShippingServicesRequest)) {
             require_once (dirname(__FILE__) . '/Model/GetEligibleShippingServicesRequest.php');
-            $request = new MWSMerchantFulfillmentService_Model_GetEligibleShippingServicesRequest($request);
+            $request = new MWS_GetEligibleShippingServicesRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetEligibleShippingServices';
         $httpResponse = $this->_invoke($parameters);
 
         require_once (dirname(__FILE__) . '/Model/GetEligibleShippingServicesResponse.php');
-        $response = MWSMerchantFulfillmentService_Model_GetEligibleShippingServicesResponse::fromXML($httpResponse['ResponseBody']);
+        $response = MWS_GetEligibleShippingServicesResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
     }
@@ -227,16 +247,16 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
      */
     public function getShipment($request)
     {
-        if (!($request instanceof MWSMerchantFulfillmentService_Model_GetShipmentRequest)) {
+        if (!($request instanceof MWS_GetShipmentRequest)) {
             require_once (dirname(__FILE__) . '/Model/GetShipmentRequest.php');
-            $request = new MWSMerchantFulfillmentService_Model_GetShipmentRequest($request);
+            $request = new MWS_GetShipmentRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetShipment';
         $httpResponse = $this->_invoke($parameters);
 
         require_once (dirname(__FILE__) . '/Model/GetShipmentResponse.php');
-        $response = MWSMerchantFulfillmentService_Model_GetShipmentResponse::fromXML($httpResponse['ResponseBody']);
+        $response = MWS_GetShipmentResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
     }
@@ -275,16 +295,16 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
      */
     public function getServiceStatus($request)
     {
-        if (!($request instanceof MWSMerchantFulfillmentService_Model_GetServiceStatusRequest)) {
+        if (!($request instanceof MWS_GetServiceStatusRequest)) {
             require_once (dirname(__FILE__) . '/Model/GetServiceStatusRequest.php');
-            $request = new MWSMerchantFulfillmentService_Model_GetServiceStatusRequest($request);
+            $request = new MWS_GetServiceStatusRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetServiceStatus';
         $httpResponse = $this->_invoke($parameters);
 
         require_once (dirname(__FILE__) . '/Model/GetServiceStatusResponse.php');
-        $response = MWSMerchantFulfillmentService_Model_GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
+        $response = MWS_GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
     }
@@ -330,9 +350,13 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
      */
     public function __construct($awsAccessKeyId, $awsSecretAccessKey, $applicationName, $applicationVersion, $config = null)
     {
-        iconv_set_encoding('output_encoding', 'UTF-8');
+      if (PHP_VERSION_ID < 50600) {
         iconv_set_encoding('input_encoding', 'UTF-8');
+        iconv_set_encoding('output_encoding', 'UTF-8');
         iconv_set_encoding('internal_encoding', 'UTF-8');
+      } else {
+        ini_set('default_charset', 'UTF-8');
+      }
 
         $this->_awsAccessKeyId = $awsAccessKeyId;
         $this->_awsSecretAccessKey = $awsSecretAccessKey;
@@ -470,7 +494,7 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
         try {
             if (empty($this->_config['ServiceURL'])) {
                 require_once (dirname(__FILE__) . '/Exception.php');
-                throw new MWSMerchantFulfillmentService_Exception(
+                throw new MWS_Exception(
                     array ('ErrorCode' => 'InvalidServiceURL',
                            'Message' => "Missing serviceUrl configuration value. You may obtain a list of valid MWS URLs by consulting the MWS Developer's Guide, or reviewing the sample code published along side this library."));
             }
@@ -489,18 +513,18 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
                 throw $this->_reportAnyErrors($response['ResponseBody'],
                     $status, $response['ResponseHeaderMetadata']);
             }
-        } catch (MWSMerchantFulfillmentService_Exception $se) {
+        } catch (MWS_Exception $se) {
             throw $se;
-        } catch (Exception $t) {
+        } catch (\Exception $t) {
             require_once (dirname(__FILE__) . '/Exception.php');
-            throw new MWSMerchantFulfillmentService_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
+            throw new MWS_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
         }
     }
 
     /**
      * Look for additional error strings in the response and return formatted exception
      */
-    private function _reportAnyErrors($responseBody, $status, $responseHeaderMetadata, Exception $e =  null)
+    private function _reportAnyErrors($responseBody, $status, $responseHeaderMetadata, \Exception $e =  null)
     {
         $exProps = array();
         $exProps["StatusCode"] = $status;
@@ -520,7 +544,7 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
         }
 
         require_once (dirname(__FILE__) . '/Exception.php');
-        return new MWSMerchantFulfillmentService_Exception($exProps);
+        return new MWS_Exception($exProps);
     }
 
 
@@ -588,7 +612,7 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
             $exProps["Message"] = curl_error($ch);
             $exProps["ErrorType"] = "HTTP";
             curl_close($ch);
-            throw new MWSMerchantFulfillmentService_Exception($exProps);
+            throw new MWS_Exception($exProps);
         }
 
         curl_close($ch);
@@ -639,7 +663,7 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
             require_once (dirname(__FILE__) . '/Exception.php');
             $exProps["Message"] = "Failed to parse valid HTTP response (" . $response . ")";
             $exProps["ErrorType"] = "HTTP";
-            throw new MWSMerchantFulfillmentService_Exception($exProps);
+            throw new MWS_Exception($exProps);
         }
 
         return array(
@@ -701,7 +725,7 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
         }
  
         require_once(dirname(__FILE__) . '/Model/ResponseHeaderMetadata.php');
-        return new MWSMerchantFulfillmentService_Model_ResponseHeaderMetadata(
+        return new MWS_ResponseHeaderMetadata(
           $headers['x-mws-request-id'],
           $headers['x-mws-response-context'],
           $headers['x-mws-timestamp'],
@@ -803,7 +827,7 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
             $parameters['SignatureMethod'] = $algorithm;
             $stringToSign = $this->_calculateStringToSignV2($parameters);
         } else {
-            throw new Exception("Invalid Signature Version specified");
+            throw new \Exception("Invalid Signature Version specified");
         }
         return $this->_sign($stringToSign, $key, $algorithm);
     }
@@ -846,7 +870,7 @@ class MWSMerchantFulfillmentService_Client implements MWSMerchantFulfillmentServ
         } else if ($algorithm === 'HmacSHA256') {
             $hash = 'sha256';
         } else {
-            throw new Exception ("Non-supported signing method specified");
+            throw new \Exception ("Non-supported signing method specified");
         }
         return base64_encode(
             hash_hmac($hash, $data, $key, true)

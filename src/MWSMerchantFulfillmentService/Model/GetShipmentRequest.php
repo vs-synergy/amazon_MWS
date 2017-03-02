@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\GetShipmentRequest;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,7 +40,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_GetShipmentRequest extends MWSMerchantFulfillmentService_Model {
+ class MWS_GetShipmentRequest extends Model {
 
     public function __construct($data = null)
     {

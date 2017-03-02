@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\ShippingServiceOptions;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -38,13 +41,13 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_ShippingServiceOptions extends MWSMerchantFulfillmentService_Model {
+ class MWS_ShippingServiceOptions extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'DeliveryExperience' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'DeclaredValue' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_CurrencyAmount'),
+    'DeclaredValue' => array('FieldValue' => null, 'FieldType' => 'MWS_CurrencyAmount'),
     'CarrierWillPickUp' => array('FieldValue' => null, 'FieldType' => 'bool'),
     'LabelFormat' => array('FieldValue' => null, 'FieldType' => 'string'),
     );

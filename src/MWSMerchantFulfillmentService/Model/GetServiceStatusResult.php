@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\GetServiceStatusResult;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -36,7 +39,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_GetServiceStatusResult extends MWSMerchantFulfillmentService_Model {
+ class MWS_GetServiceStatusResult extends Model {
 
     public function __construct($data = null)
     {

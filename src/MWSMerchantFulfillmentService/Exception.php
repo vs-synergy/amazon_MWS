@@ -17,13 +17,14 @@
  * Generated: Fri Nov 11 06:01:18 PST 2016
  */
 
+namespace MWS_Fulfillment\MWS_Exception;
 
 /**
  * MWS Merchant Fulfillment Service Exception provides details of errors
  * returned by MWS Merchant Fulfillment Service service
  *
  */
-class MWSMerchantFulfillmentService_Exception extends Exception
+class MWS_Exception extends \Exception
 
 {
     /** @var string */
@@ -62,7 +63,7 @@ class MWSMerchantFulfillmentService_Exception extends Exception
         parent::__construct($this->_message);
         if (array_key_exists("Exception", $errorInfo)) {
             $exception = $errorInfo["Exception"];
-            if ($exception instanceof MWSMerchantFulfillmentService_Exception) {
+            if ($exception instanceof MWS_Exception) {
                 $this->_statusCode = $exception->getStatusCode();
                 $this->_errorCode = $exception->getErrorCode();
                 $this->_errorType = $exception->getErrorType();

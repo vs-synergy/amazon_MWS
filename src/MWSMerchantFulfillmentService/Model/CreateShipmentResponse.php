@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\CreateShipmentResponse;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,14 +40,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_CreateShipmentResponse extends MWSMerchantFulfillmentService_Model {
+ class MWS_CreateShipmentResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'CreateShipmentResult' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_CreateShipmentResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWSMerchantFulfillmentService_Model_ResponseHeaderMetadata'),
+    'CreateShipmentResult' => array('FieldValue' => null, 'FieldType' => 'MWS_CreateShipmentResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -196,14 +199,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='CreateShipmentResponse']");
         if ($response->length == 1) {
-            return new MWSMerchantFulfillmentService_Model_CreateShipmentResponse(($response->item(0))); 
+            return new MWS_CreateShipmentResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MWSMerchantFulfillmentService_Model_CreateShipmentResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_CreateShipmentResponse from provided XML. 
                                   Make sure that CreateShipmentResponse is a root element");
         }
     }

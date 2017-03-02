@@ -21,6 +21,9 @@
  *  @see MWSMerchantFulfillmentService_Model
  */
 
+namespace MWS_Fulfillment\Model\GetEligibleShippingServicesResult;
+use MWS_Fulfillment\Model;
+
 require_once (dirname(__FILE__) . '/../Model.php');
 
 
@@ -37,14 +40,14 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * </ul>
  */
 
- class MWSMerchantFulfillmentService_Model_GetEligibleShippingServicesResult extends MWSMerchantFulfillmentService_Model {
+ class MWS_GetEligibleShippingServicesResult extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'ShippingServiceList' => array('FieldValue' => array(), 'FieldType' => array('MWSMerchantFulfillmentService_Model_ShippingService'), 'ListMemberName' => 'ShippingService'),
-    'TemporarilyUnavailableCarrierList' => array('FieldValue' => array(), 'FieldType' => array('MWSMerchantFulfillmentService_Model_TemporarilyUnavailableCarrier'), 'ListMemberName' => 'TemporarilyUnavailableCarrier'),
-    'TermsAndConditionsNotAcceptedCarrierList' => array('FieldValue' => array(), 'FieldType' => array('MWSMerchantFulfillmentService_Model_TermsAndConditionsNotAcceptedCarrier'), 'ListMemberName' => 'TermsAndConditionsNotAcceptedCarrier'),
+    'ShippingServiceList' => array('FieldValue' => array(), 'FieldType' => array('MWS_ShippingService'), 'ListMemberName' => 'ShippingService'),
+    'TemporarilyUnavailableCarrierList' => array('FieldValue' => array(), 'FieldType' => array('MWS_TemporarilyUnavailableCarrier'), 'ListMemberName' => 'TemporarilyUnavailableCarrier'),
+    'TermsAndConditionsNotAcceptedCarrierList' => array('FieldValue' => array(), 'FieldType' => array('MWS_TermsAndConditionsNotAcceptedCarrier'), 'ListMemberName' => 'TermsAndConditionsNotAcceptedCarrier'),
     );
     parent::__construct($data);
     }

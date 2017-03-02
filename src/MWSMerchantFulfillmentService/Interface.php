@@ -17,7 +17,9 @@
  * Generated: Fri Nov 11 06:01:18 PST 2016
  */
 
-interface  MWSMerchantFulfillmentService_Interface
+namespace MWS_Fulfillment\MWS_Interface;
+
+interface  MWS_Interface
 {
 
     /**
