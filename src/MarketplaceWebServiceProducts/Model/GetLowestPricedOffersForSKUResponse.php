@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\GetLowestPricedOffersForSKUResponse;
-use MarketplaceWebServiceProducts;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -25,7 +21,10 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetLowestPricedOffersForSKUResponse;
+use MWS_Products\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -41,14 +40,14 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MWS_GetLowestPricedOffersForSKUResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'GetLowestPricedOffersForSKUResult' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForSKUResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ResponseHeaderMetadata'),
+    'GetLowestPricedOffersForSKUResult' => array('FieldValue' => null, 'FieldType' => 'MWS_GetLowestPricedOffersForSKUResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -200,14 +199,14 @@ use MarketplaceWebServiceProducts;
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='GetLowestPricedOffersForSKUResponse']");
         if ($response->length == 1) {
-            return new MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForSKUResponse(($response->item(0))); 
+            return new MWS_GetLowestPricedOffersForSKUResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForSKUResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_GetLowestPricedOffersForSKUResponse from provided XML. 
                                   Make sure that GetLowestPricedOffersForSKUResponse is a root element");
         }
     }

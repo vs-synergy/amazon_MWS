@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\FeeDetail;
-use MarketplaceWebServiceProducts;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -25,7 +21,10 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\FeeDetail;
+use MWS_Products\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -44,17 +43,17 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MWS_FeeDetail extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'FeeType' => array('FieldValue' => null, 'FieldType' => 'string'),
-    'FeeAmount' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'FeePromotion' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'TaxAmount' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'FinalFee' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'IncludedFeeDetailList' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_FeeDetailList'),
+    'FeeAmount' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'FeePromotion' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'TaxAmount' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'FinalFee' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'IncludedFeeDetailList' => array('FieldValue' => null, 'FieldType' => 'MWS_FeeDetailList'),
     );
     parent::__construct($data);
     }

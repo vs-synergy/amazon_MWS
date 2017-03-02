@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\GetLowestPricedOffersForASINResult;
-use MarketplaceWebServiceProducts;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -25,7 +21,10 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetLowestPricedOffersForASINResult;
+use MWS_Products\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -45,7 +44,7 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MWS_GetLowestPricedOffersForASINResult extends Model {
 
     public function __construct($data = null)
     {
@@ -54,9 +53,9 @@ use MarketplaceWebServiceProducts;
     'ASIN' => array('FieldValue' => null, 'FieldType' => '@string'),
     'ItemCondition' => array('FieldValue' => null, 'FieldType' => '@string'),
     'status' => array('FieldValue' => null, 'FieldType' => '@string'),
-    'Identifier' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_GetLowestPricedOffersAsinIdentifier'),
-    'Summary' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_Summary'),
-    'Offers' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ASINOfferDetailList'),
+    'Identifier' => array('FieldValue' => null, 'FieldType' => 'MWS_GetLowestPricedOffersAsinIdentifier'),
+    'Summary' => array('FieldValue' => null, 'FieldType' => 'MWS_Summary'),
+    'Offers' => array('FieldValue' => null, 'FieldType' => 'MWS_ASINOfferDetailList'),
     );
     parent::__construct($data);
     }

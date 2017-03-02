@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\GetLowestPricedOffersForSKUResult;
-use MarketplaceWebServiceProducts;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -25,7 +21,10 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetLowestPricedOffersForSKUResult;
+use MWS_Products\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -45,7 +44,7 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MWS_GetLowestPricedOffersForSKUResult extends Model {
 
     public function __construct($data = null)
     {
@@ -54,9 +53,9 @@ use MarketplaceWebServiceProducts;
     'SKU' => array('FieldValue' => null, 'FieldType' => '@string'),
     'ItemCondition' => array('FieldValue' => null, 'FieldType' => '@string'),
     'status' => array('FieldValue' => null, 'FieldType' => '@string'),
-    'Identifier' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_GetLowestPricedOffersSkuIdentifier'),
-    'Summary' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_Summary'),
-    'Offers' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_SKUOfferDetailList'),
+    'Identifier' => array('FieldValue' => null, 'FieldType' => 'MWS_GetLowestPricedOffersSkuIdentifier'),
+    'Summary' => array('FieldValue' => null, 'FieldType' => 'MWS_Summary'),
+    'Offers' => array('FieldValue' => null, 'FieldType' => 'MWS_SKUOfferDetailList'),
     );
     parent::__construct($data);
     }

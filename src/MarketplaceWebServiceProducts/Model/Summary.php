@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\Summary;
-use MarketplaceWebServiceProducts;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -25,7 +21,10 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\Summary;
+use MWS_Products\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -45,18 +44,18 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MWS_Summary extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
     'TotalOfferCount' => array('FieldValue' => null, 'FieldType' => 'int'),
-    'NumberOfOffers' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_NumberOfOffers'),
-    'LowestPrices' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_LowestPrices'),
-    'BuyBoxPrices' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_BuyBoxPrices'),
-    'ListPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'SuggestedLowerPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'BuyBoxEligibleOffers' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_BuyBoxEligibleOffers'),
+    'NumberOfOffers' => array('FieldValue' => null, 'FieldType' => 'MWS_NumberOfOffers'),
+    'LowestPrices' => array('FieldValue' => null, 'FieldType' => 'MWS_LowestPrices'),
+    'BuyBoxPrices' => array('FieldValue' => null, 'FieldType' => 'MWS_BuyBoxPrices'),
+    'ListPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'SuggestedLowerPricePlusShipping' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'BuyBoxEligibleOffers' => array('FieldValue' => null, 'FieldType' => 'MWS_BuyBoxEligibleOffers'),
     );
     parent::__construct($data);
     }

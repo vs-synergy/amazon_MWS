@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\GetMyFeesEstimateResponse;
-use MarketplaceWebServiceProducts;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -25,7 +21,10 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetMyFeesEstimateResponse;
+use MWS_Products\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -41,14 +40,14 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MWS_GetMyFeesEstimateResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'GetMyFeesEstimateResult' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_GetMyFeesEstimateResult'),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ResponseHeaderMetadata'),
+    'GetMyFeesEstimateResult' => array('FieldValue' => null, 'FieldType' => 'MWS_GetMyFeesEstimateResult'),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -200,14 +199,14 @@ use MarketplaceWebServiceProducts;
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='GetMyFeesEstimateResponse']");
         if ($response->length == 1) {
-            return new MarketplaceWebServiceProducts_Model_GetMyFeesEstimateResponse(($response->item(0))); 
+            return new MWS_GetMyFeesEstimateResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebServiceProducts_Model_GetMyFeesEstimateResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_GetMyFeesEstimateResponse from provided XML. 
                                   Make sure that GetMyFeesEstimateResponse is a root element");
         }
     }

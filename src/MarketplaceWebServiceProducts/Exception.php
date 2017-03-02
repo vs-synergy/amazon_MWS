@@ -1,6 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\Exception;
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -19,13 +17,15 @@ namespace MarketplaceWebServiceProducts\Exception;
  * Generated: Fri Sep 16 11:49:32 PDT 2016
  */
 
+namespace MWS_Products\MWS_Exception;
+
 
 /**
  * Marketplace Web Service Products Exception provides details of errors
  * returned by Marketplace Web Service Products service
  *
  */
-class MWS_Exception extends Exception
+class MWS_Exception extends \Exception
 
 {
     /** @var string */

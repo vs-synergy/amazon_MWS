@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\GetMyPriceForSKUResponse;
-use MarketplaceWebServiceProducts;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -25,7 +21,10 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\GetMyPriceForSKUResponse;
+use MWS_Products\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -41,14 +40,14 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MWS_GetMyPriceForSKUResponse extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'GetMyPriceForSKUResult' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceProducts_Model_GetMyPriceForSKUResult')),
-    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ResponseMetadata'),
-    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_ResponseHeaderMetadata'),
+    'GetMyPriceForSKUResult' => array('FieldValue' => array(), 'FieldType' => array('MWS_GetMyPriceForSKUResult')),
+    'ResponseMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseMetadata'),
+    'ResponseHeaderMetadata' => array('FieldValue' => null, 'FieldType' => 'MWS_ResponseHeaderMetadata'),
     );
     parent::__construct($data);
     }
@@ -218,14 +217,14 @@ use MarketplaceWebServiceProducts;
      */
     public static function fromXML($xml)
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $xpath = new \DOMXPath($dom);
         $response = $xpath->query("//*[local-name()='GetMyPriceForSKUResponse']");
         if ($response->length == 1) {
-            return new MarketplaceWebServiceProducts_Model_GetMyPriceForSKUResponse(($response->item(0))); 
+            return new MWS_GetMyPriceForSKUResponse(($response->item(0)));
         } else {
-            throw new Exception ("Unable to construct MarketplaceWebServiceProducts_Model_GetMyPriceForSKUResponse from provided XML. 
+            throw new \Exception ("Unable to construct MWS_GetMyPriceForSKUResponse from provided XML. 
                                   Make sure that GetMyPriceForSKUResponse is a root element");
         }
     }

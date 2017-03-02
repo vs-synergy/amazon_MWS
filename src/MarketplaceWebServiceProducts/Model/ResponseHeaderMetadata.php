@@ -1,7 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\ResponseHeaderMetadata;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -20,7 +17,10 @@ namespace MarketplaceWebServiceProducts\ResponseHeaderMetadata;
  * Generated: Fri Sep 16 11:49:32 PDT 2016
  */
 
-class Amz_Model {
+namespace MWS_Products\Model\ResponseHeaderMetadata;
+use MWS_Products\Model;
+
+class MWS_ResponseHeaderMetadata {
 
   const REQUEST_ID = 'x-mws-request-id';
   const RESPONSE_CONTEXT = 'x-mws-response-context';
@@ -32,12 +32,12 @@ class Amz_Model {
   private $metadata = array();
 
   public function __construct($requestId = null, $responseContext = null, $timestamp = null,
-                              $quotaMax = null, $quotaMax = null, $quotaResetsAt = null) {
+                              $quotaMax = null, $quotaRemaining = null, $quotaResetsAt = null) {
     $this->metadata[self::REQUEST_ID] = $requestId;
     $this->metadata[self::RESPONSE_CONTEXT] = $responseContext;
     $this->metadata[self::TIMESTAMP] = $timestamp;
     $this->metadata[self::QUOTA_MAX] = $quotaMax;
-    $this->metadata[self::QUOTA_REMAINING] = $quotaMax;
+    $this->metadata[self::QUOTA_REMAINING] = $quotaRemaining;
     $this->metadata[self::QUOTA_RESETS_AT] = $quotaResetsAt;
   }
 

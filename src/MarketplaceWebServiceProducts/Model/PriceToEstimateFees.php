@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\PriceToEstimateFees;
-use MarketplaceWebServiceProducts;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -25,7 +21,10 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\PriceToEstimateFees;
+use MWS_Products\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -41,14 +40,14 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MWS_PriceToEstimateFees extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'ListingPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'Shipping' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_MoneyType'),
-    'Points' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_Points'),
+    'ListingPrice' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'Shipping' => array('FieldValue' => null, 'FieldType' => 'MWS_MoneyType'),
+    'Points' => array('FieldValue' => null, 'FieldType' => 'MWS_Points'),
     );
     parent::__construct($data);
     }

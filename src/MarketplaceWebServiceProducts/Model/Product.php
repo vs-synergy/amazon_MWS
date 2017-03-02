@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\Product;
-use MarketplaceWebServiceProducts;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -25,7 +21,10 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\Product;
+use MWS_Products\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -45,18 +44,18 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MWS_Product extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'Identifiers' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_IdentifierType'),
-    'AttributeSets' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_AttributeSetList'),
-    'Relationships' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_RelationshipList'),
-    'CompetitivePricing' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_CompetitivePricingType'),
-    'SalesRankings' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_SalesRankList'),
-    'LowestOfferListings' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_LowestOfferListingList'),
-    'Offers' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceProducts_Model_OffersList'),
+    'Identifiers' => array('FieldValue' => null, 'FieldType' => 'MWS_IdentifierType'),
+    'AttributeSets' => array('FieldValue' => null, 'FieldType' => 'MWS_AttributeSetList'),
+    'Relationships' => array('FieldValue' => null, 'FieldType' => 'MWS_RelationshipList'),
+    'CompetitivePricing' => array('FieldValue' => null, 'FieldType' => 'MWS_CompetitivePricingType'),
+    'SalesRankings' => array('FieldValue' => null, 'FieldType' => 'MWS_SalesRankList'),
+    'LowestOfferListings' => array('FieldValue' => null, 'FieldType' => 'MWS_LowestOfferListingList'),
+    'Offers' => array('FieldValue' => null, 'FieldType' => 'MWS_OffersList'),
     );
     parent::__construct($data);
     }

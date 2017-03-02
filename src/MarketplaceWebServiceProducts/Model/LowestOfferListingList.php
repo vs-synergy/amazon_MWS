@@ -1,8 +1,4 @@
 <?php
-
-namespace MarketplaceWebServiceProducts\LowestOfferListingList;
-use MarketplaceWebServiceProducts;
-
 /*******************************************************************************
  * Copyright 2009-2016 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -25,7 +21,10 @@ use MarketplaceWebServiceProducts;
  *  @see MarketplaceWebServiceProducts_Model
  */
 
+namespace MWS_Products\Model\LowestOfferListingList;
+use MWS_Products\Model;
 
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -39,12 +38,12 @@ use MarketplaceWebServiceProducts;
  * </ul>
  */
 
- class Amz_Model extends MarketplaceWebServiceProductsMWS_Model {
+ class MWS_LowestOfferListingList extends Model {
 
     public function __construct($data = null)
     {
     $this->_fields = array (
-    'LowestOfferListing' => array('FieldValue' => array(), 'FieldType' => array('MarketplaceWebServiceProducts_Model_LowestOfferListingType')),
+    'LowestOfferListing' => array('FieldValue' => array(), 'FieldType' => array('MWS_LowestOfferListingType')),
     );
     parent::__construct($data);
     }
