@@ -21,6 +21,8 @@
  *  @see MarketplaceWebServiceSellers_Interface
  */
 
+namespace MWS_Sellers\Client;
+
 use MWS_Sellers\MWS_Interface\MWS_Interface;
 use MWS_Sellers\MWS_Exception\MWS_Exception;
 use MWS_Sellers\Model\ResponseHeaderMetadata\MWS_ResponseHeaderMetadata;
